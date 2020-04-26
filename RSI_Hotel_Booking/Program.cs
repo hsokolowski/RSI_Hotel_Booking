@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using RSI_Hotel_Booking.Auth;
+using System;
 using System.Windows.Forms;
 
 namespace RSI_Hotel_Booking
@@ -16,7 +14,7 @@ namespace RSI_Hotel_Booking
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Login());
         }
     }
 }
