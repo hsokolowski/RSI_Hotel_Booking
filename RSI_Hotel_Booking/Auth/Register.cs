@@ -19,7 +19,7 @@ namespace RSI_Hotel_Booking.Auth
 
         private void registerBtn_Click(object sender, EventArgs e)
         {
-            if (true) // positive
+            if (IsRegister()) // positive
             {
                 this.Hide();
                 Login sistema = new Login();
@@ -30,6 +30,11 @@ namespace RSI_Hotel_Booking.Auth
             {
 
             }
+        }
+
+        private bool IsRegister()
+        {
+            return true;
         }
     }
 }

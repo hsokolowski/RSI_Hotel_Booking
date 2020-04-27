@@ -12,6 +12,8 @@ namespace RSI_Hotel_Booking.Auth
 {
     public partial class Login : Form
     {
+        string login, password;
+
         public Login()
         {
             InitializeComponent();
@@ -22,7 +24,7 @@ namespace RSI_Hotel_Booking.Auth
             if(IsPositiveLogin()) // positive
             {
                 this.Hide();
-                Form1 sistema = new Form1();
+                Form1 sistema = new Form1(login,password);
                 sistema.ShowDialog();
                 this.Close();
             }
@@ -42,7 +44,14 @@ namespace RSI_Hotel_Booking.Auth
 
         private bool IsPositiveLogin()
         {
+            SetData();
             return true;
+        }
+
+        private void SetData()
+        {
+            login = loginTextBox.Text;
+            password = passwordTextBox.Text;
         }
     }
 }

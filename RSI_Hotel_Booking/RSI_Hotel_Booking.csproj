@@ -58,6 +58,12 @@
     <Compile Include="Auth\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Details\Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Details\Details.Designer.cs">
+      <DependentUpon>Details.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

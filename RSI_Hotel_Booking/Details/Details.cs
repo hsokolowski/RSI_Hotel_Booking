@@ -8,16 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RSI_Hotel_Booking
+namespace RSI_Hotel_Booking.Details
 {
-    public partial class Form1 : Form
+    public partial class Details : Form
     {
-        string login, password;
-
-        public Form1(string login, string password)
+        public Details()
         {
             InitializeComponent();
-            label1.Text = login + " " + password;
         }
     }
 }
