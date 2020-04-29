@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://endpoint.ws.project.soap.rsi.com/" targetNamespace="http://endpoint.ws.project.soap.rsi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="getRoomDto" type="tns:getRoomDto" />
+  <xs:element name="getRoomDtoResponse" type="tns:getRoomDtoResponse" />
+  <xs:complexType name="getRoomDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getRoomDtoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:roomDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="roomDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="equipments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hotel" type="tns:hotelDto" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="isReserved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="maxPersons" type="xs:int" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="photos" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="pricePerPerson" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="rules" nillable="true" type="tns:ruleDto" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="userRatings" nillable="true" type="tns:userRatingDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="hotelDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="additionalInformations" type="xs:string" />
+      <xs:element minOccurs="0" name="address" type="xs:string" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="nearbyPlaces" nillable="true" type="tns:placeDto" />
+      <xs:element minOccurs="0" name="rate" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="placeDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="distance" type="xs:double" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="photo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ruleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userRatingDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="personName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

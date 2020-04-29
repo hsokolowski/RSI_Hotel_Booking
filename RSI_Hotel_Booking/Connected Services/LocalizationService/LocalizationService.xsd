@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://endpoint.ws.project.soap.rsi.com/" targetNamespace="http://endpoint.ws.project.soap.rsi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="getLocalizationListDto" type="tns:getLocalizationListDto" />
+  <xs:element name="getLocalizationListDtoResponse" type="tns:getLocalizationListDtoResponse" />
+  <xs:complexType name="getLocalizationListDto">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getLocalizationListDtoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:localizationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="localizationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="photo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

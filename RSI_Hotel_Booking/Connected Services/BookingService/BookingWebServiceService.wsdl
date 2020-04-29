@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://endpoint.ws.project.soap.rsi.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="BookingWebServiceService" targetNamespace="http://endpoint.ws.project.soap.rsi.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:4040/ws/servers/BookingService?xsd=1" namespace="http://endpoint.ws.project.soap.rsi.com/" />
+    </xsd:schema>
+  </types>
+  <message name="checkAvailable">
+    <part name="parameters" element="tns:checkAvailable" />
+  </message>
+  <message name="checkAvailableResponse">
+    <part name="parameters" element="tns:checkAvailableResponse" />
+  </message>
+  <message name="booking">
+    <part name="parameters" element="tns:booking" />
+  </message>
+  <message name="bookingResponse">
+    <part name="parameters" element="tns:bookingResponse" />
+  </message>
+  <portType name="BookingWebService">
+    <operation name="checkAvailable">
+      <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/checkAvailableRequest" message="tns:checkAvailable" />
+      <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/checkAvailableResponse" message="tns:checkAvailableResponse" />
+    </operation>
+    <operation name="booking">
+      <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/bookingRequest" message="tns:booking" />
+      <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/bookingResponse" message="tns:bookingResponse" />
+    </operation>
+  </portType>
+  <binding name="BookingWebServicePortBinding" type="tns:BookingWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="checkAvailable">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="booking">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BookingWebServiceService">
+    <port name="BookingWebServicePort" binding="tns:BookingWebServicePortBinding">
+      <soap:address location="http://localhost:4040/ws/servers/BookingService" />
+    </port>
+  </service>
+</definitions>

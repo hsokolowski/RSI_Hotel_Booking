@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://endpoint.ws.project.soap.rsi.com/" targetNamespace="http://endpoint.ws.project.soap.rsi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="login" type="tns:login" />
+  <xs:element name="loginResponse" type="tns:loginResponse" />
+  <xs:element name="register" type="tns:register" />
+  <xs:element name="registerResponse" type="tns:registerResponse" />
+  <xs:complexType name="register">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:userDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+      <xs:element minOccurs="0" name="username" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="login">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:userDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="loginResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

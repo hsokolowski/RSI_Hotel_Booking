@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://endpoint.ws.project.soap.rsi.com/" targetNamespace="http://endpoint.ws.project.soap.rsi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="booking" type="tns:booking" />
+  <xs:element name="bookingResponse" type="tns:bookingResponse" />
+  <xs:element name="checkAvailable" type="tns:checkAvailable" />
+  <xs:element name="checkAvailableResponse" type="tns:checkAvailableResponse" />
+  <xs:complexType name="checkAvailable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:bookingDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bookingDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateFrom" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dateTo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="numberDays" type="xs:int" />
+      <xs:element minOccurs="0" name="numberPersons" type="xs:int" />
+      <xs:element minOccurs="0" name="personId" type="xs:long" />
+      <xs:element minOccurs="0" name="roomId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkAvailableResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="booking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:bookingDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bookingResponse">
+    <xs:sequence />
+  </xs:complexType>
+</xs:schema>
