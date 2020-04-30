@@ -34,11 +34,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.exceptionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginBtn
             // 
-            this.loginBtn.Location = new System.Drawing.Point(187, 216);
+            this.loginBtn.Location = new System.Drawing.Point(186, 232);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(138, 32);
             this.loginBtn.TabIndex = 0;
@@ -71,7 +72,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(196, 138);
+            this.label2.Location = new System.Drawing.Point(197, 125);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 24);
             this.label2.TabIndex = 7;
@@ -87,18 +88,28 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(161, 165);
+            this.passwordTextBox.Location = new System.Drawing.Point(161, 152);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '●';
             this.passwordTextBox.Size = new System.Drawing.Size(189, 22);
             this.passwordTextBox.TabIndex = 9;
             this.passwordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // exceptionLabel
+            // 
+            this.exceptionLabel.AutoSize = true;
+            this.exceptionLabel.Location = new System.Drawing.Point(167, 196);
+            this.exceptionLabel.Name = "exceptionLabel";
+            this.exceptionLabel.Size = new System.Drawing.Size(46, 17);
+            this.exceptionLabel.TabIndex = 10;
+            this.exceptionLabel.Text = "label3";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 342);
+            this.Controls.Add(this.exceptionLabel);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.label2);
@@ -125,5 +136,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox loginTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.Label exceptionLabel;
     }
 }

@@ -1,36 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SecurityWebServiceClient = RSI_Hotel_Booking.SecurityService.SecurityWebServiceClient;
+using UserDto = RSI_Hotel_Booking.SecurityService.userDto;
+using Global = RSI_Hotel_Booking.Globals.Globals;
 
 namespace RSI_Hotel_Booking.Auth
 {
     public partial class Login : Form
     {
-        string login, password;
+        UserDto user = new UserDto();
 
         public Login()
         {
             InitializeComponent();
+            exceptionLabel.Visible = false;
+            exceptionLabel.ForeColor = Color.Red;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            if(IsPositiveLogin()) // positive
+            exceptionLabel.Visible = false;
+
+            if (IsPositiveLogin()) // positive
             {
                 this.Hide();
-                Form1 sistema = new Form1(login,password);
+                Form1 sistema = new Form1();
                 sistema.ShowDialog();
                 this.Close();
             }
             else
             {
-
+                exceptionLabel.Text = "Wrong login or password";
+                exceptionLabel.Visible = true;
             }
         }
 
@@ -45,13 +47,23 @@ namespace RSI_Hotel_Booking.Auth
         private bool IsPositiveLogin()
         {
             SetData();
-            return true;
+
+            SecurityWebServiceClient client = new SecurityWebServiceClient();
+            try
+            {
+                Global.ID = client.login(user);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private void SetData()
         {
-            login = loginTextBox.Text;
-            password = passwordTextBox.Text;
+            user.username = loginTextBox.Text;
+            user.password = passwordTextBox.Text;
         }
     }
 }
