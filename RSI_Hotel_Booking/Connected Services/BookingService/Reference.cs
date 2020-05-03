@@ -15,19 +15,6 @@ namespace RSI_Hotel_Booking.BookingService {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/", ConfigurationName="BookingService.BookingWebService")]
     public interface BookingWebService {
         
-        // CODEGEN: Parametr „return” wymaga dodatkowych informacji o schemacie, których nie można uzyskać w trybie parametru. Określony atrybut to „System.Xml.Serialization.XmlElementAttribute”.
-        [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosReque" +
-            "st", ReplyAction="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosRespo" +
-            "nse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse getBookingViewDtos(RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosReque" +
-            "st", ReplyAction="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosRespo" +
-            "nse")]
-        System.Threading.Tasks.Task<RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse> getBookingViewDtosAsync(RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest request);
-        
         // CODEGEN: Parametr „arg0” wymaga dodatkowych informacji o schemacie, których nie można uzyskać w trybie parametru. Określony atrybut to „System.Xml.Serialization.XmlElementAttribute”.
         [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/bookingRequest", ReplyAction="http://endpoint.ws.project.soap.rsi.com/BookingWebService/bookingResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -44,150 +31,19 @@ namespace RSI_Hotel_Booking.BookingService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/checkAvailableRequest", ReplyAction="http://endpoint.ws.project.soap.rsi.com/BookingWebService/checkAvailableResponse")]
         System.Threading.Tasks.Task<RSI_Hotel_Booking.BookingService.checkAvailableResponse> checkAvailableAsync(RSI_Hotel_Booking.BookingService.checkAvailableRequest request);
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
-    public partial class bookingViewDto : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private System.DateTime dateFromField;
+        // CODEGEN: Parametr „return” wymaga dodatkowych informacji o schemacie, których nie można uzyskać w trybie parametru. Określony atrybut to „System.Xml.Serialization.XmlElementAttribute”.
+        [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosReque" +
+            "st", ReplyAction="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosRespo" +
+            "nse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse getBookingViewDtos(RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest request);
         
-        private bool dateFromFieldSpecified;
-        
-        private System.DateTime dateToField;
-        
-        private bool dateToFieldSpecified;
-        
-        private string hotelNameField;
-        
-        private long idField;
-        
-        private bool idFieldSpecified;
-        
-        private string localizationNameField;
-        
-        private string roomNameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public System.DateTime dateFrom {
-            get {
-                return this.dateFromField;
-            }
-            set {
-                this.dateFromField = value;
-                this.RaisePropertyChanged("dateFrom");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool dateFromSpecified {
-            get {
-                return this.dateFromFieldSpecified;
-            }
-            set {
-                this.dateFromFieldSpecified = value;
-                this.RaisePropertyChanged("dateFromSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public System.DateTime dateTo {
-            get {
-                return this.dateToField;
-            }
-            set {
-                this.dateToField = value;
-                this.RaisePropertyChanged("dateTo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool dateToSpecified {
-            get {
-                return this.dateToFieldSpecified;
-            }
-            set {
-                this.dateToFieldSpecified = value;
-                this.RaisePropertyChanged("dateToSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string hotelName {
-            get {
-                return this.hotelNameField;
-            }
-            set {
-                this.hotelNameField = value;
-                this.RaisePropertyChanged("hotelName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public long id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool idSpecified {
-            get {
-                return this.idFieldSpecified;
-            }
-            set {
-                this.idFieldSpecified = value;
-                this.RaisePropertyChanged("idSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public string localizationName {
-            get {
-                return this.localizationNameField;
-            }
-            set {
-                this.localizationNameField = value;
-                this.RaisePropertyChanged("localizationName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public string roomName {
-            get {
-                return this.roomNameField;
-            }
-            set {
-                this.roomNameField = value;
-                this.RaisePropertyChanged("roomName");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosReque" +
+            "st", ReplyAction="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse> getBookingViewDtosAsync(RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest request);
     }
     
     /// <remarks/>
@@ -376,39 +232,147 @@ namespace RSI_Hotel_Booking.BookingService {
         }
     }
     
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getBookingViewDtos", WrapperNamespace="http://endpoint.ws.project.soap.rsi.com/", IsWrapped=true)]
-    public partial class getBookingViewDtosRequest {
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
+    public partial class bookingViewDto : object, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public long arg0;
+        private System.DateTime dateFromField;
         
-        public getBookingViewDtosRequest() {
+        private bool dateFromFieldSpecified;
+        
+        private System.DateTime dateToField;
+        
+        private bool dateToFieldSpecified;
+        
+        private string hotelNameField;
+        
+        private long idField;
+        
+        private bool idFieldSpecified;
+        
+        private string localizationNameField;
+        
+        private string roomNameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public System.DateTime dateFrom {
+            get {
+                return this.dateFromField;
+            }
+            set {
+                this.dateFromField = value;
+                this.RaisePropertyChanged("dateFrom");
+            }
         }
         
-        public getBookingViewDtosRequest(long arg0) {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getBookingViewDtosResponse", WrapperNamespace="http://endpoint.ws.project.soap.rsi.com/", IsWrapped=true)]
-    public partial class getBookingViewDtosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public RSI_Hotel_Booking.BookingService.bookingViewDto[] @return;
-        
-        public getBookingViewDtosResponse() {
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool dateFromSpecified {
+            get {
+                return this.dateFromFieldSpecified;
+            }
+            set {
+                this.dateFromFieldSpecified = value;
+                this.RaisePropertyChanged("dateFromSpecified");
+            }
         }
         
-        public getBookingViewDtosResponse(RSI_Hotel_Booking.BookingService.bookingViewDto[] @return) {
-            this.@return = @return;
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public System.DateTime dateTo {
+            get {
+                return this.dateToField;
+            }
+            set {
+                this.dateToField = value;
+                this.RaisePropertyChanged("dateTo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool dateToSpecified {
+            get {
+                return this.dateToFieldSpecified;
+            }
+            set {
+                this.dateToFieldSpecified = value;
+                this.RaisePropertyChanged("dateToSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string hotelName {
+            get {
+                return this.hotelNameField;
+            }
+            set {
+                this.hotelNameField = value;
+                this.RaisePropertyChanged("hotelName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public long id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool idSpecified {
+            get {
+                return this.idFieldSpecified;
+            }
+            set {
+                this.idFieldSpecified = value;
+                this.RaisePropertyChanged("idSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string localizationName {
+            get {
+                return this.localizationNameField;
+            }
+            set {
+                this.localizationNameField = value;
+                this.RaisePropertyChanged("localizationName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public string roomName {
+            get {
+                return this.roomNameField;
+            }
+            set {
+                this.roomNameField = value;
+                this.RaisePropertyChanged("roomName");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
         }
     }
     
@@ -476,6 +440,42 @@ namespace RSI_Hotel_Booking.BookingService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getBookingViewDtos", WrapperNamespace="http://endpoint.ws.project.soap.rsi.com/", IsWrapped=true)]
+    public partial class getBookingViewDtosRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public long arg0;
+        
+        public getBookingViewDtosRequest() {
+        }
+        
+        public getBookingViewDtosRequest(long arg0) {
+            this.arg0 = arg0;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getBookingViewDtosResponse", WrapperNamespace="http://endpoint.ws.project.soap.rsi.com/", IsWrapped=true)]
+    public partial class getBookingViewDtosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public RSI_Hotel_Booking.BookingService.bookingViewDto[] @return;
+        
+        public getBookingViewDtosResponse() {
+        }
+        
+        public getBookingViewDtosResponse(RSI_Hotel_Booking.BookingService.bookingViewDto[] @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface BookingWebServiceChannel : RSI_Hotel_Booking.BookingService.BookingWebService, System.ServiceModel.IClientChannel {
     }
@@ -501,29 +501,6 @@ namespace RSI_Hotel_Booking.BookingService {
         
         public BookingWebServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse RSI_Hotel_Booking.BookingService.BookingWebService.getBookingViewDtos(RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest request) {
-            return base.Channel.getBookingViewDtos(request);
-        }
-        
-        public RSI_Hotel_Booking.BookingService.bookingViewDto[] getBookingViewDtos(long arg0) {
-            RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest inValue = new RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest();
-            inValue.arg0 = arg0;
-            RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse retVal = ((RSI_Hotel_Booking.BookingService.BookingWebService)(this)).getBookingViewDtos(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse> RSI_Hotel_Booking.BookingService.BookingWebService.getBookingViewDtosAsync(RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest request) {
-            return base.Channel.getBookingViewDtosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse> getBookingViewDtosAsync(long arg0) {
-            RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest inValue = new RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest();
-            inValue.arg0 = arg0;
-            return ((RSI_Hotel_Booking.BookingService.BookingWebService)(this)).getBookingViewDtosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -569,6 +546,29 @@ namespace RSI_Hotel_Booking.BookingService {
             RSI_Hotel_Booking.BookingService.checkAvailableRequest inValue = new RSI_Hotel_Booking.BookingService.checkAvailableRequest();
             inValue.arg0 = arg0;
             return ((RSI_Hotel_Booking.BookingService.BookingWebService)(this)).checkAvailableAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse RSI_Hotel_Booking.BookingService.BookingWebService.getBookingViewDtos(RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest request) {
+            return base.Channel.getBookingViewDtos(request);
+        }
+        
+        public RSI_Hotel_Booking.BookingService.bookingViewDto[] getBookingViewDtos(long arg0) {
+            RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest inValue = new RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest();
+            inValue.arg0 = arg0;
+            RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse retVal = ((RSI_Hotel_Booking.BookingService.BookingWebService)(this)).getBookingViewDtos(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse> RSI_Hotel_Booking.BookingService.BookingWebService.getBookingViewDtosAsync(RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest request) {
+            return base.Channel.getBookingViewDtosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RSI_Hotel_Booking.BookingService.getBookingViewDtosResponse> getBookingViewDtosAsync(long arg0) {
+            RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest inValue = new RSI_Hotel_Booking.BookingService.getBookingViewDtosRequest();
+            inValue.arg0 = arg0;
+            return ((RSI_Hotel_Booking.BookingService.BookingWebService)(this)).getBookingViewDtosAsync(inValue);
         }
     }
 }

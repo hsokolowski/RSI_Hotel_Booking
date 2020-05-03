@@ -34,11 +34,7 @@
             this.price = new System.Windows.Forms.Label();
             this.persons = new System.Windows.Forms.Label();
             this.idTb = new System.Windows.Forms.Label();
-            this.description = new System.Windows.Forms.Label();
             this.pricePerPerson = new System.Windows.Forms.Label();
-            this.listEq = new System.Windows.Forms.Label();
-            this.rule = new System.Windows.Forms.Label();
-            this.userRate = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,6 +48,10 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.descriptionTb = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -65,9 +65,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 58);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 41);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(482, 327);
+            this.pictureBox1.Size = new System.Drawing.Size(482, 344);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -76,7 +76,7 @@
             // 
             this.nameRoom.AutoSize = true;
             this.nameRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.nameRoom.Location = new System.Drawing.Point(13, 13);
+            this.nameRoom.Location = new System.Drawing.Point(12, 9);
             this.nameRoom.Name = "nameRoom";
             this.nameRoom.Size = new System.Drawing.Size(73, 29);
             this.nameRoom.TabIndex = 1;
@@ -86,7 +86,7 @@
             // 
             this.price.AutoSize = true;
             this.price.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.price.Location = new System.Drawing.Point(6, 18);
+            this.price.Location = new System.Drawing.Point(6, 25);
             this.price.Name = "price";
             this.price.Size = new System.Drawing.Size(91, 39);
             this.price.TabIndex = 2;
@@ -95,16 +95,17 @@
             // persons
             // 
             this.persons.AutoSize = true;
-            this.persons.Location = new System.Drawing.Point(10, 66);
+            this.persons.Location = new System.Drawing.Point(384, 43);
             this.persons.Name = "persons";
             this.persons.Size = new System.Drawing.Size(59, 17);
             this.persons.TabIndex = 3;
             this.persons.Text = "persons";
+            this.persons.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // idTb
             // 
             this.idTb.AutoSize = true;
-            this.idTb.Location = new System.Drawing.Point(1177, 9);
+            this.idTb.Location = new System.Drawing.Point(1207, 9);
             this.idTb.MinimumSize = new System.Drawing.Size(50, 0);
             this.idTb.Name = "idTb";
             this.idTb.Size = new System.Drawing.Size(50, 17);
@@ -112,50 +113,15 @@
             this.idTb.Text = "id";
             this.idTb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // description
-            // 
-            this.description.AutoSize = true;
-            this.description.Location = new System.Drawing.Point(6, 18);
-            this.description.Name = "description";
-            this.description.Size = new System.Drawing.Size(77, 17);
-            this.description.TabIndex = 5;
-            this.description.Text = "description";
-            // 
             // pricePerPerson
             // 
             this.pricePerPerson.AutoSize = true;
-            this.pricePerPerson.Location = new System.Drawing.Point(220, 66);
+            this.pricePerPerson.Location = new System.Drawing.Point(337, 18);
             this.pricePerPerson.Name = "pricePerPerson";
             this.pricePerPerson.Size = new System.Drawing.Size(106, 17);
             this.pricePerPerson.TabIndex = 6;
             this.pricePerPerson.Text = "pricePerPerson";
-            // 
-            // listEq
-            // 
-            this.listEq.AutoSize = true;
-            this.listEq.Location = new System.Drawing.Point(6, 18);
-            this.listEq.Name = "listEq";
-            this.listEq.Size = new System.Drawing.Size(42, 17);
-            this.listEq.TabIndex = 7;
-            this.listEq.Text = "listEq";
-            // 
-            // rule
-            // 
-            this.rule.AutoSize = true;
-            this.rule.Location = new System.Drawing.Point(6, 18);
-            this.rule.Name = "rule";
-            this.rule.Size = new System.Drawing.Size(32, 17);
-            this.rule.TabIndex = 8;
-            this.rule.Text = "rule";
-            // 
-            // userRate
-            // 
-            this.userRate.AutoSize = true;
-            this.userRate.Location = new System.Drawing.Point(6, 18);
-            this.userRate.Name = "userRate";
-            this.userRate.Size = new System.Drawing.Size(66, 17);
-            this.userRate.TabIndex = 9;
-            this.userRate.Text = "userRate";
+            this.pricePerPerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // listView1
             // 
@@ -183,7 +149,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dateTimePicker2);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Location = new System.Drawing.Point(928, 58);
+            this.groupBox1.Location = new System.Drawing.Point(958, 41);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(299, 122);
             this.groupBox1.TabIndex = 13;
@@ -238,63 +204,98 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.price);
             this.groupBox3.Controls.Add(this.persons);
             this.groupBox3.Controls.Add(this.pricePerPerson);
-            this.groupBox3.Location = new System.Drawing.Point(503, 58);
+            this.groupBox3.Location = new System.Drawing.Point(503, 41);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(419, 201);
+            this.groupBox3.Size = new System.Drawing.Size(449, 77);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Informations";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.description);
-            this.groupBox4.Location = new System.Drawing.Point(7, 87);
+            this.groupBox4.Controls.Add(this.descriptionTb);
+            this.groupBox4.Location = new System.Drawing.Point(12, 543);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(406, 108);
+            this.groupBox4.Size = new System.Drawing.Size(482, 192);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Descirption";
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.listEq);
-            this.groupBox5.Location = new System.Drawing.Point(503, 266);
+            this.groupBox5.Controls.Add(this.listView2);
+            this.groupBox5.Location = new System.Drawing.Point(503, 128);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(419, 119);
+            this.groupBox5.Size = new System.Drawing.Size(449, 409);
             this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Equipment";
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.rule);
-            this.groupBox6.Location = new System.Drawing.Point(929, 187);
+            this.groupBox6.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox6.Location = new System.Drawing.Point(958, 169);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(298, 198);
+            this.groupBox6.Size = new System.Drawing.Size(299, 368);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Rule";
+            this.groupBox6.Text = "Rules";
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.userRate);
-            this.groupBox7.Location = new System.Drawing.Point(503, 395);
+            this.groupBox7.Controls.Add(this.flowLayoutPanel2);
+            this.groupBox7.Location = new System.Drawing.Point(500, 543);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(724, 142);
+            this.groupBox7.Size = new System.Drawing.Size(724, 192);
             this.groupBox7.TabIndex = 18;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Commetns";
+            // 
+            // listView2
+            // 
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(6, 21);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(437, 382);
+            this.listView2.TabIndex = 8;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // descriptionTb
+            // 
+            this.descriptionTb.Location = new System.Drawing.Point(7, 22);
+            this.descriptionTb.Multiline = true;
+            this.descriptionTb.Name = "descriptionTb";
+            this.descriptionTb.ReadOnly = true;
+            this.descriptionTb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionTb.Size = new System.Drawing.Size(469, 164);
+            this.descriptionTb.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(7, 22);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(281, 340);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(7, 22);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(711, 130);
+            this.flowLayoutPanel2.TabIndex = 0;
             // 
             // DetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1239, 548);
+            this.ClientSize = new System.Drawing.Size(1269, 747);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -316,11 +317,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,11 +331,7 @@
         private System.Windows.Forms.Label price;
         private System.Windows.Forms.Label persons;
         private System.Windows.Forms.Label idTb;
-        private System.Windows.Forms.Label description;
         private System.Windows.Forms.Label pricePerPerson;
-        private System.Windows.Forms.Label listEq;
-        private System.Windows.Forms.Label rule;
-        private System.Windows.Forms.Label userRate;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -351,5 +345,9 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.TextBox descriptionTb;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }

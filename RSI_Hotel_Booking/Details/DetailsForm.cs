@@ -7,6 +7,7 @@ using BookingClient = RSI_Hotel_Booking.BookingService.BookingWebServiceClient;
 using BookingDto = RSI_Hotel_Booking.BookingService.bookingDto;
 using System.Drawing;
 using System;
+using System.Collections;
 
 namespace RSI_Hotel_Booking.Details
 {
@@ -14,7 +15,8 @@ namespace RSI_Hotel_Booking.Details
     {
         long _ID;
         RoomDto room;
-        private ImageList myImageList;
+        ImageList myImageList;
+
 
         public DetailsForm(string title, long id)
         {
@@ -49,15 +51,19 @@ namespace RSI_Hotel_Booking.Details
             room = client.getRoomDto(id);
 
             nameRoom.Text = room.name;
-            description.Text = room.description;
+            descriptionTb.Text = room.description;
             pricePerPerson.Text = "Price per person: " + room.pricePerPerson + "$";
             persons.Text = "Max persons: " + room.maxPersons;
             idTb.Text = _ID + ":" + room.id;
+
             if (room.equipments != null)
             {
+                listView2.View = View.List;
+                
                 foreach (var item in room.equipments)
                 {
-                    listEq.Text += item + " ";
+                    var listViewItem = new ListViewItem(item);
+                    listView2.Items.Add(listViewItem);
                 }
             }
 
@@ -86,9 +92,19 @@ namespace RSI_Hotel_Booking.Details
 
             if (room.rules != null)
             {
+                //listView3.View = View.Tile;
+                //listView1.TileSize = new Size(100, 40);
                 foreach (var item in room.rules)
                 {
-                    rule.Text += "[" + item.name + " " + item.description + "]";
+                    RuleItemcs rule = new RuleItemcs(item.name, item.description);
+                    flowLayoutPanel1.Controls.Add(rule);
+                    //TextBox lvi = new TextBox();
+                    //lvi.Multiline = true;
+                    //lvi.Width = 260;
+                    //lvi.Text = "["+item.name+"] \n";
+                    //lvi.Text += item.description;
+                    //listView3.Items.Add(lvi);
+
                 }
             }
 
@@ -96,7 +112,8 @@ namespace RSI_Hotel_Booking.Details
             {
                 foreach (var item in room.userRatings)
                 {
-                    userRate.Text += "[" + item.personName + " " + item.description + "]";
+                    CommentItem comment = new CommentItem(item.personName, item.description);
+                    flowLayoutPanel2.Controls.Add(comment);
                 }
             }
 
@@ -130,16 +147,45 @@ namespace RSI_Hotel_Booking.Details
         {
             BookingDto booking = new BookingDto();
             booking.dateFrom = dateTimePicker1.Value.Date;
-            booking.dateTo = dateTimePicker1.Value.Date;
-            booking.numberDays = (dateTimePicker1.Value - dateTimePicker1.Value).Days;
+            booking.dateTo = dateTimePicker2.Value.Date;
+            booking.numberDays = (dateTimePicker2.Value.Date - dateTimePicker1.Value.Date).Days;
             long? iD = Globals.Globals.ID;
-            booking.personId = (long)iD;
+            //booking.personId = (long)iD;
+            booking.personId = 181;
             booking.roomId = _ID;
+            booking.numberPersons = Convert.ToInt32(persons.Text.Split(' ')[2]);
 
-            //BookingClient client = new BookingClient();
-            //client.checkAvailable(booking);
-
-            MessageBox.Show("Selected Date: " + booking.dateFrom + " to "+ booking.dateTo + " numbers: " + booking.numberDays + " person: " + booking.personId + " room: " + booking.roomId, "DateTimePicker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BookingClient client = new BookingClient();
+            if(client.checkAvailable(booking))
+            {
+                string message = "Are you sure you want to rent this room?";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, "Booking", buttons);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        client.booking(booking);
+                        MessageBox.Show("Resevartion is OK!", "Booking", MessageBoxButtons.OK);
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show("Something goes wrong :(", "Booking", MessageBoxButtons.OK);
+                        MessageBox.Show(ex.Message, "Booking", MessageBoxButtons.OK);
+                    }
+                    
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Room in not avaible during this time! Please choose another date.", "DateTimePicker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
     }
 }
