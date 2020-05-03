@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:4040/ws/servers/RoomService?xsd=1" namespace="http://endpoint.ws.project.soap.rsi.com/" />
     </xsd:schema>
   </types>
+  <message name="getRoomListDtos">
+    <part name="parameters" element="tns:getRoomListDtos" />
+  </message>
+  <message name="getRoomListDtosResponse">
+    <part name="parameters" element="tns:getRoomListDtosResponse" />
+  </message>
   <message name="getRoomDto">
     <part name="parameters" element="tns:getRoomDto" />
   </message>
@@ -12,6 +18,10 @@
     <part name="parameters" element="tns:getRoomDtoResponse" />
   </message>
   <portType name="RoomWebService">
+    <operation name="getRoomListDtos">
+      <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomListDtosRequest" message="tns:getRoomListDtos" />
+      <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomListDtosResponse" message="tns:getRoomListDtosResponse" />
+    </operation>
     <operation name="getRoomDto">
       <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomDtoRequest" message="tns:getRoomDto" />
       <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomDtoResponse" message="tns:getRoomDtoResponse" />
@@ -19,6 +29,15 @@
   </portType>
   <binding name="RoomWebServicePortBinding" type="tns:RoomWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getRoomListDtos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="getRoomDto">
       <soap:operation soapAction="" />
       <input>

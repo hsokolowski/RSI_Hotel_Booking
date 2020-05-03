@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RSI_Hotel_Booking.Hotel;
+using RSI_Hotel_Booking.Room;
 
-namespace RSI_Hotel_Booking
+namespace RSI_Hotel_Booking.Hotel
 {
-    public partial class Form1ListItem : UserControl
+    public partial class HotelListItem : UserControl
     {
-        public Form1ListItem()
+        public HotelListItem()
         {
             InitializeComponent();
         }
@@ -37,12 +37,12 @@ namespace RSI_Hotel_Booking
         public Bitmap Image
         {
             get { return image; }
-            set { image = value; if(value != null ) pictureBox1.Image = value; }
+            set { image = value; if (value != null) pictureBox1.Image = value; }
         }
 
-        private void reservationBtn_Click(object sender, EventArgs e)
+        private void show_Click(object sender, EventArgs e)
         {
-            HotelForm sistema = new HotelForm(Title,Subtitle);
+            RoomsForm sistema = new RoomsForm(Title, Subtitle);
             sistema.Show();
         }
     }

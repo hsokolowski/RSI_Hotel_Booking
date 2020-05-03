@@ -11,8 +11,13 @@ namespace RSI_Hotel_Booking
         public Form1()
         {
             InitializeComponent();
-            label1.Text = Global.ID.ToString();
+            label1.Text = "Hello " + Global.Login.ToString() + "!";
 
+            SetLocalization();
+        }
+
+        private void SetLocalization()
+        {
             LocalizationWebServiceClient client = new LocalizationWebServiceClient();
             Localization[] localizationDtos = client.getLocalizationListDto();
 
@@ -21,14 +26,17 @@ namespace RSI_Hotel_Booking
                 System.Console.WriteLine(item.id + " " + item.name + " " + item.photo);
                 Form1ListItem listItem = new Form1ListItem();
                 listItem.Title = item.name;
-                listItem.Subtitle = item.id.ToString();
+                listItem.Subtitle = item.id;
 
-                System.Net.WebRequest request = System.Net.WebRequest.Create(item.photo);
-                System.Net.WebResponse response = request.GetResponse();
-                System.IO.Stream responseStream = response.GetResponseStream();
-                Bitmap bitmap = new Bitmap(responseStream);
+                if (item.photo != null)
+                {
+                    System.Net.WebRequest request = System.Net.WebRequest.Create(item.photo);
+                    System.Net.WebResponse response = request.GetResponse();
+                    System.IO.Stream responseStream = response.GetResponseStream();
+                    Bitmap bitmap = new Bitmap(responseStream);
 
-                listItem.Image = bitmap;
+                    listItem.Image = bitmap;
+                }
 
                 flowLayoutPanel1.Controls.Add(listItem);
             }

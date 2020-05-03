@@ -9,5 +9,6 @@ namespace RSI_Hotel_Booking.Globals
     public class Globals
     {
         public static long? ID { get; set; } = null;
+        public static string Login { get; set; } = null;
     }
 }

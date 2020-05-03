@@ -16,6 +16,15 @@ namespace RSI_Hotel_Booking.RoomService {
     public interface RoomWebService {
         
         // CODEGEN: Parametr „return” wymaga dodatkowych informacji o schemacie, których nie można uzyskać w trybie parametru. Określony atrybut to „System.Xml.Serialization.XmlElementAttribute”.
+        [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomListDtosRequest", ReplyAction="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomListDtosResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        RSI_Hotel_Booking.RoomService.getRoomListDtosResponse getRoomListDtos(RSI_Hotel_Booking.RoomService.getRoomListDtosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomListDtosRequest", ReplyAction="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomListDtosResponse")]
+        System.Threading.Tasks.Task<RSI_Hotel_Booking.RoomService.getRoomListDtosResponse> getRoomListDtosAsync(RSI_Hotel_Booking.RoomService.getRoomListDtosRequest request);
+        
+        // CODEGEN: Parametr „return” wymaga dodatkowych informacji o schemacie, których nie można uzyskać w trybie parametru. Określony atrybut to „System.Xml.Serialization.XmlElementAttribute”.
         [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomDtoRequest", ReplyAction="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomDtoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
@@ -23,6 +32,390 @@ namespace RSI_Hotel_Booking.RoomService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomDtoRequest", ReplyAction="http://endpoint.ws.project.soap.rsi.com/RoomWebService/getRoomDtoResponse")]
         System.Threading.Tasks.Task<RSI_Hotel_Booking.RoomService.getRoomDtoResponse> getRoomDtoAsync(RSI_Hotel_Booking.RoomService.getRoomDtoRequest request);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
+    public partial class roomListDto : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string exhibitionPhotoField;
+        
+        private long idField;
+        
+        private bool idFieldSpecified;
+        
+        private bool isReservedField;
+        
+        private bool isReservedFieldSpecified;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string exhibitionPhoto {
+            get {
+                return this.exhibitionPhotoField;
+            }
+            set {
+                this.exhibitionPhotoField = value;
+                this.RaisePropertyChanged("exhibitionPhoto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public long id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool idSpecified {
+            get {
+                return this.idFieldSpecified;
+            }
+            set {
+                this.idFieldSpecified = value;
+                this.RaisePropertyChanged("idSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public bool isReserved {
+            get {
+                return this.isReservedField;
+            }
+            set {
+                this.isReservedField = value;
+                this.RaisePropertyChanged("isReserved");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool isReservedSpecified {
+            get {
+                return this.isReservedFieldSpecified;
+            }
+            set {
+                this.isReservedFieldSpecified = value;
+                this.RaisePropertyChanged("isReservedSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+                this.RaisePropertyChanged("name");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
+    public partial class userRatingDto : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string descriptionField;
+        
+        private string personNameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+                this.RaisePropertyChanged("description");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string personName {
+            get {
+                return this.personNameField;
+            }
+            set {
+                this.personNameField = value;
+                this.RaisePropertyChanged("personName");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
+    public partial class ruleDto : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string descriptionField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+                this.RaisePropertyChanged("description");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+                this.RaisePropertyChanged("name");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
+    public partial class placeDto : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string descriptionField;
+        
+        private double distanceField;
+        
+        private bool distanceFieldSpecified;
+        
+        private string nameField;
+        
+        private string photoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+                this.RaisePropertyChanged("description");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public double distance {
+            get {
+                return this.distanceField;
+            }
+            set {
+                this.distanceField = value;
+                this.RaisePropertyChanged("distance");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool distanceSpecified {
+            get {
+                return this.distanceFieldSpecified;
+            }
+            set {
+                this.distanceFieldSpecified = value;
+                this.RaisePropertyChanged("distanceSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+                this.RaisePropertyChanged("name");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string photo {
+            get {
+                return this.photoField;
+            }
+            set {
+                this.photoField = value;
+                this.RaisePropertyChanged("photo");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
+    public partial class hotelDto : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string additionalInformationsField;
+        
+        private string addressField;
+        
+        private string nameField;
+        
+        private placeDto[] nearbyPlacesField;
+        
+        private int rateField;
+        
+        private bool rateFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string additionalInformations {
+            get {
+                return this.additionalInformationsField;
+            }
+            set {
+                this.additionalInformationsField = value;
+                this.RaisePropertyChanged("additionalInformations");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string address {
+            get {
+                return this.addressField;
+            }
+            set {
+                this.addressField = value;
+                this.RaisePropertyChanged("address");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+                this.RaisePropertyChanged("name");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("nearbyPlaces", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=3)]
+        public placeDto[] nearbyPlaces {
+            get {
+                return this.nearbyPlacesField;
+            }
+            set {
+                this.nearbyPlacesField = value;
+                this.RaisePropertyChanged("nearbyPlaces");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public int rate {
+            get {
+                return this.rateField;
+            }
+            set {
+                this.rateField = value;
+                this.RaisePropertyChanged("rate");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool rateSpecified {
+            get {
+                return this.rateFieldSpecified;
+            }
+            set {
+                this.rateFieldSpecified = value;
+                this.RaisePropertyChanged("rateSpecified");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     /// <remarks/>
@@ -253,285 +646,39 @@ namespace RSI_Hotel_Booking.RoomService {
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
-    public partial class hotelDto : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRoomListDtos", WrapperNamespace="http://endpoint.ws.project.soap.rsi.com/", IsWrapped=true)]
+    public partial class getRoomListDtosRequest {
         
-        private string additionalInformationsField;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public long arg0;
         
-        private string addressField;
-        
-        private string nameField;
-        
-        private placeDto[] nearbyPlacesField;
-        
-        private int rateField;
-        
-        private bool rateFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string additionalInformations {
-            get {
-                return this.additionalInformationsField;
-            }
-            set {
-                this.additionalInformationsField = value;
-                this.RaisePropertyChanged("additionalInformations");
-            }
+        public getRoomListDtosRequest() {
         }
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string address {
-            get {
-                return this.addressField;
-            }
-            set {
-                this.addressField = value;
-                this.RaisePropertyChanged("address");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("nearbyPlaces", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=3)]
-        public placeDto[] nearbyPlaces {
-            get {
-                return this.nearbyPlacesField;
-            }
-            set {
-                this.nearbyPlacesField = value;
-                this.RaisePropertyChanged("nearbyPlaces");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public int rate {
-            get {
-                return this.rateField;
-            }
-            set {
-                this.rateField = value;
-                this.RaisePropertyChanged("rate");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool rateSpecified {
-            get {
-                return this.rateFieldSpecified;
-            }
-            set {
-                this.rateFieldSpecified = value;
-                this.RaisePropertyChanged("rateSpecified");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+        public getRoomListDtosRequest(long arg0) {
+            this.arg0 = arg0;
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
-    public partial class placeDto : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRoomListDtosResponse", WrapperNamespace="http://endpoint.ws.project.soap.rsi.com/", IsWrapped=true)]
+    public partial class getRoomListDtosResponse {
         
-        private string descriptionField;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public RSI_Hotel_Booking.RoomService.roomListDto[] @return;
         
-        private double distanceField;
-        
-        private bool distanceFieldSpecified;
-        
-        private string nameField;
-        
-        private string photoField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-                this.RaisePropertyChanged("description");
-            }
+        public getRoomListDtosResponse() {
         }
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public double distance {
-            get {
-                return this.distanceField;
-            }
-            set {
-                this.distanceField = value;
-                this.RaisePropertyChanged("distance");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool distanceSpecified {
-            get {
-                return this.distanceFieldSpecified;
-            }
-            set {
-                this.distanceFieldSpecified = value;
-                this.RaisePropertyChanged("distanceSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string photo {
-            get {
-                return this.photoField;
-            }
-            set {
-                this.photoField = value;
-                this.RaisePropertyChanged("photo");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
-    public partial class userRatingDto : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string descriptionField;
-        
-        private string personNameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-                this.RaisePropertyChanged("description");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string personName {
-            get {
-                return this.personNameField;
-            }
-            set {
-                this.personNameField = value;
-                this.RaisePropertyChanged("personName");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
-    public partial class ruleDto : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string descriptionField;
-        
-        private string nameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-                this.RaisePropertyChanged("description");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("name");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+        public getRoomListDtosResponse(RSI_Hotel_Booking.RoomService.roomListDto[] @return) {
+            this.@return = @return;
         }
     }
     
@@ -596,6 +743,29 @@ namespace RSI_Hotel_Booking.RoomService {
         
         public RoomWebServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RSI_Hotel_Booking.RoomService.getRoomListDtosResponse RSI_Hotel_Booking.RoomService.RoomWebService.getRoomListDtos(RSI_Hotel_Booking.RoomService.getRoomListDtosRequest request) {
+            return base.Channel.getRoomListDtos(request);
+        }
+        
+        public RSI_Hotel_Booking.RoomService.roomListDto[] getRoomListDtos(long arg0) {
+            RSI_Hotel_Booking.RoomService.getRoomListDtosRequest inValue = new RSI_Hotel_Booking.RoomService.getRoomListDtosRequest();
+            inValue.arg0 = arg0;
+            RSI_Hotel_Booking.RoomService.getRoomListDtosResponse retVal = ((RSI_Hotel_Booking.RoomService.RoomWebService)(this)).getRoomListDtos(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RSI_Hotel_Booking.RoomService.getRoomListDtosResponse> RSI_Hotel_Booking.RoomService.RoomWebService.getRoomListDtosAsync(RSI_Hotel_Booking.RoomService.getRoomListDtosRequest request) {
+            return base.Channel.getRoomListDtosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RSI_Hotel_Booking.RoomService.getRoomListDtosResponse> getRoomListDtosAsync(long arg0) {
+            RSI_Hotel_Booking.RoomService.getRoomListDtosRequest inValue = new RSI_Hotel_Booking.RoomService.getRoomListDtosRequest();
+            inValue.arg0 = arg0;
+            return ((RSI_Hotel_Booking.RoomService.RoomWebService)(this)).getRoomListDtosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

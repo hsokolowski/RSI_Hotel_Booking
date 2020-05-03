@@ -52,6 +52,7 @@ namespace RSI_Hotel_Booking.Auth
             try
             {
                 Global.ID = client.login(user);
+                Global.Login = loginTextBox.Text;
                 return true;
             }
             catch (Exception)

@@ -5,31 +5,31 @@
       <xsd:import schemaLocation="http://localhost:4040/ws/servers/HotelService?xsd=1" namespace="http://endpoint.ws.project.soap.rsi.com/" />
     </xsd:schema>
   </types>
-  <message name="getHotelDto">
-    <part name="parameters" element="tns:getHotelDto" />
-  </message>
-  <message name="getHotelDtoResponse">
-    <part name="parameters" element="tns:getHotelDtoResponse" />
-  </message>
   <message name="getHotelListDto">
     <part name="parameters" element="tns:getHotelListDto" />
   </message>
   <message name="getHotelListDtoResponse">
     <part name="parameters" element="tns:getHotelListDtoResponse" />
   </message>
+  <message name="getHotelDto">
+    <part name="parameters" element="tns:getHotelDto" />
+  </message>
+  <message name="getHotelDtoResponse">
+    <part name="parameters" element="tns:getHotelDtoResponse" />
+  </message>
   <portType name="HotelWebService">
-    <operation name="getHotelDto">
-      <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/HotelWebService/getHotelDtoRequest" message="tns:getHotelDto" />
-      <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/HotelWebService/getHotelDtoResponse" message="tns:getHotelDtoResponse" />
-    </operation>
     <operation name="getHotelListDto">
       <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/HotelWebService/getHotelListDtoRequest" message="tns:getHotelListDto" />
       <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/HotelWebService/getHotelListDtoResponse" message="tns:getHotelListDtoResponse" />
     </operation>
+    <operation name="getHotelDto">
+      <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/HotelWebService/getHotelDtoRequest" message="tns:getHotelDto" />
+      <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/HotelWebService/getHotelDtoResponse" message="tns:getHotelDtoResponse" />
+    </operation>
   </portType>
   <binding name="HotelWebServicePortBinding" type="tns:HotelWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="getHotelDto">
+    <operation name="getHotelListDto">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -38,7 +38,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="getHotelListDto">
+    <operation name="getHotelDto">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -4,6 +4,8 @@
   <xs:element name="bookingResponse" type="tns:bookingResponse" />
   <xs:element name="checkAvailable" type="tns:checkAvailable" />
   <xs:element name="checkAvailableResponse" type="tns:checkAvailableResponse" />
+  <xs:element name="getBookingViewDtos" type="tns:getBookingViewDtos" />
+  <xs:element name="getBookingViewDtosResponse" type="tns:getBookingViewDtosResponse" />
   <xs:complexType name="checkAvailable">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="tns:bookingDto" />
@@ -22,6 +24,26 @@
   <xs:complexType name="checkAvailableResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBookingViewDtos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBookingViewDtosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:bookingViewDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bookingViewDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateFrom" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dateTo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="hotelName" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="localizationName" type="xs:string" />
+      <xs:element minOccurs="0" name="roomName" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="booking">

@@ -75,5 +75,13 @@ namespace RSI_Hotel_Booking.Auth
             }
             return true;
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            Login sistema = new Login();
+            sistema.ShowDialog();
+            this.Close();
+        }
     }
 }

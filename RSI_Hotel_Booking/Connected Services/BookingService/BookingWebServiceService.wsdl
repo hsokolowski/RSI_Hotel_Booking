@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:4040/ws/servers/BookingService?xsd=1" namespace="http://endpoint.ws.project.soap.rsi.com/" />
     </xsd:schema>
   </types>
-  <message name="checkAvailable">
-    <part name="parameters" element="tns:checkAvailable" />
+  <message name="getBookingViewDtos">
+    <part name="parameters" element="tns:getBookingViewDtos" />
   </message>
-  <message name="checkAvailableResponse">
-    <part name="parameters" element="tns:checkAvailableResponse" />
+  <message name="getBookingViewDtosResponse">
+    <part name="parameters" element="tns:getBookingViewDtosResponse" />
   </message>
   <message name="booking">
     <part name="parameters" element="tns:booking" />
@@ -17,19 +17,29 @@
   <message name="bookingResponse">
     <part name="parameters" element="tns:bookingResponse" />
   </message>
+  <message name="checkAvailable">
+    <part name="parameters" element="tns:checkAvailable" />
+  </message>
+  <message name="checkAvailableResponse">
+    <part name="parameters" element="tns:checkAvailableResponse" />
+  </message>
   <portType name="BookingWebService">
-    <operation name="checkAvailable">
-      <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/checkAvailableRequest" message="tns:checkAvailable" />
-      <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/checkAvailableResponse" message="tns:checkAvailableResponse" />
+    <operation name="getBookingViewDtos">
+      <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosRequest" message="tns:getBookingViewDtos" />
+      <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/getBookingViewDtosResponse" message="tns:getBookingViewDtosResponse" />
     </operation>
     <operation name="booking">
       <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/bookingRequest" message="tns:booking" />
       <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/bookingResponse" message="tns:bookingResponse" />
     </operation>
+    <operation name="checkAvailable">
+      <input wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/checkAvailableRequest" message="tns:checkAvailable" />
+      <output wsam:Action="http://endpoint.ws.project.soap.rsi.com/BookingWebService/checkAvailableResponse" message="tns:checkAvailableResponse" />
+    </operation>
   </portType>
   <binding name="BookingWebServicePortBinding" type="tns:BookingWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="checkAvailable">
+    <operation name="getBookingViewDtos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -39,6 +49,15 @@
       </output>
     </operation>
     <operation name="booking">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="checkAvailable">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
