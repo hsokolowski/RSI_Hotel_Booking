@@ -54,11 +54,11 @@ namespace RSI_Hotel_Booking.BookingService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://endpoint.ws.project.soap.rsi.com/")]
     public partial class bookingDto : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private System.DateTime dateFromField;
+        private long dateFromField;
         
         private bool dateFromFieldSpecified;
         
-        private System.DateTime dateToField;
+        private long dateToField;
         
         private bool dateToFieldSpecified;
         
@@ -80,7 +80,7 @@ namespace RSI_Hotel_Booking.BookingService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public System.DateTime dateFrom {
+        public long dateFrom {
             get {
                 return this.dateFromField;
             }
@@ -104,7 +104,7 @@ namespace RSI_Hotel_Booking.BookingService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public System.DateTime dateTo {
+        public long dateTo {
             get {
                 return this.dateToField;
             }

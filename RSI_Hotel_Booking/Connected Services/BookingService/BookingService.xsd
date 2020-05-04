@@ -13,8 +13,8 @@
   </xs:complexType>
   <xs:complexType name="bookingDto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="dateFrom" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="dateTo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dateFrom" type="xs:long" />
+      <xs:element minOccurs="0" name="dateTo" type="xs:long" />
       <xs:element minOccurs="0" name="numberDays" type="xs:int" />
       <xs:element minOccurs="0" name="numberPersons" type="xs:int" />
       <xs:element minOccurs="0" name="personId" type="xs:long" />
