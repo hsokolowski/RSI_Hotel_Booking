@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using SecurityWebServiceClient = RSI_Hotel_Booking.SecurityService.SecurityWebServiceClient;
 using UserDto = RSI_Hotel_Booking.SecurityService.userDto;
 using Global = RSI_Hotel_Booking.Globals.Globals;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace RSI_Hotel_Booking.Auth
 {
@@ -49,16 +51,37 @@ namespace RSI_Hotel_Booking.Auth
             SetData();
 
             SecurityWebServiceClient client = new SecurityWebServiceClient();
-            try
+
+            using (new OperationContextScope(client.InnerChannel))
             {
-                Global.ID = client.login(user);
-                Global.Login = loginTextBox.Text;
-                return true;
+                string str = "7682d860-7f58-11ea-bc55-0242ac130003";
+                HttpRequestMessageProperty reqMsg = new HttpRequestMessageProperty();
+
+                MessageHeader usernameTokenHeader = MessageHeader.CreateHeader("accessCode",
+                    "http://endpoint.ws.project.soap.rsi.com/", str);
+                OperationContext.Current.OutgoingMessageHeaders.Add(usernameTokenHeader);
+
+                try
+                {
+                    Global.ID = client.login(user);
+                    Global.Login = loginTextBox.Text;
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }
+                //reqMsg.Headers.Add("accessCode", str);
+                //reqMsg.Headers.Add("hostName", "Hubert");
+                //var usernameHeader = MessageHeader.CreateHeader("username", string.Empty, _username);
+                //OperationContext.Current.OutgoingMessageHeaders.Add(usernameHeader);
+                //var passwordHeader = MessageHeader.CreateHeader("password", string.Empty, _passowrd);
+                //OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name]=reqMsg;
+
+                //client.(serviceId);
             }
-            catch (Exception)
-            {
-                return false;
-            }
+            
         }
 
         private void SetData()
