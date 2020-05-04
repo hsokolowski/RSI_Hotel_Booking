@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+using RaportClient = RSI_Hotel_Booking.RaportService.BookingReportWebServiceClient;
+using Spire.Pdf;
+
 
 namespace RSI_Hotel_Booking.Reservations
 {
@@ -57,5 +54,43 @@ namespace RSI_Hotel_Booking.Reservations
             set { _city = value; city.Text = value; }
         }
 
+        private void raportBtn_Click(object sender, EventArgs e)
+        {
+            RaportClient client = new RaportClient();
+
+            byte[] array = client.getBookingConfirmation(id);
+
+
+            if (ByteArrayToFile("Raport Reservation.pdf", array))
+            {
+                MessageBox.Show("Raport succesfully download!", "Raport", MessageBoxButtons.OK);
+                //System.Diagnostics.Process.Start("C:/Users/Hubert/IdeaProjects/rsiprojecthotelreservation/bookingArchive/" );
+
+            }
+            else
+            {
+                MessageBox.Show("Raport download failed!", "Raport", MessageBoxButtons.OK);
+            }
+        }
+
+        public bool ByteArrayToFile(string fileName, byte[] byteArray)
+        {
+            try
+            {
+                //File.WriteAllBytes(string path, byte[] bytes);
+                using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+                {
+                    fs.Write(byteArray, 0, byteArray.Length);
+                    //File.WriteAllBytes(fileName, byteArray);
+                    System.Diagnostics.Process.Start(fileName);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught in process: {0}", ex);
+                return false;
+            }
+        }
     }
 }

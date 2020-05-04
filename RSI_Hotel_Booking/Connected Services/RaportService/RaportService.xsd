@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://endpoint.ws.project.soap.rsi.com/" targetNamespace="http://endpoint.ws.project.soap.rsi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="IOException" type="tns:IOException" />
+  <xs:element name="getBookingConfirmation" type="tns:getBookingConfirmation" />
+  <xs:element name="getBookingConfirmationResponse" type="tns:getBookingConfirmationResponse" />
+  <xs:complexType name="getBookingConfirmation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getBookingConfirmationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IOException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

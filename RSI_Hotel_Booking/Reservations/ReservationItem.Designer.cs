@@ -32,6 +32,7 @@
             this.hotel = new System.Windows.Forms.Label();
             this.room = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
+            this.raportBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // city
@@ -71,11 +72,22 @@
             this.date.TabIndex = 3;
             this.date.Text = "label1";
             // 
+            // raportBtn
+            // 
+            this.raportBtn.Location = new System.Drawing.Point(436, 26);
+            this.raportBtn.Name = "raportBtn";
+            this.raportBtn.Size = new System.Drawing.Size(75, 33);
+            this.raportBtn.TabIndex = 4;
+            this.raportBtn.Text = "Raport";
+            this.raportBtn.UseVisualStyleBackColor = true;
+            this.raportBtn.Click += new System.EventHandler(this.raportBtn_Click);
+            // 
             // ReservationItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Controls.Add(this.raportBtn);
             this.Controls.Add(this.date);
             this.Controls.Add(this.room);
             this.Controls.Add(this.hotel);
@@ -93,5 +105,6 @@
         private System.Windows.Forms.Label hotel;
         private System.Windows.Forms.Label room;
         private System.Windows.Forms.Label date;
+        private System.Windows.Forms.Button raportBtn;
     }
 }
