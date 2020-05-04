@@ -147,14 +147,21 @@ namespace RSI_Hotel_Booking.Details
         {
             BookingDto booking = new BookingDto();
             booking.dateFrom = new DateTimeOffset(dateTimePicker1.Value.Date).ToUnixTimeSeconds();
+            booking.dateFromSpecified = true;
             booking.dateTo = new DateTimeOffset(dateTimePicker2.Value.Date).ToUnixTimeSeconds();
+            booking.dateToSpecified = true;
             booking.numberDays = (dateTimePicker2.Value.Date - dateTimePicker1.Value.Date).Days;
+            booking.numberDaysSpecified = true;
             long? iD = Globals.Globals.ID;
             //booking.personId = (long)iD;
             booking.personId = 181;
+            booking.personIdSpecified = true;
             booking.roomId = _ID;
+            booking.roomIdSpecified = true;
             booking.numberPersons = Convert.ToInt32(persons.Text.Split(' ')[2]);
-
+            booking.numberPersonsSpecified = true;
+            
+            
             BookingClient client = new BookingClient();
             if(client.checkAvailable(booking))
             {
