@@ -215,6 +215,18 @@ namespace RSI_Hotel_Booking.Details
                 UserRatingClient client = new UserRatingClient();
                 client.addUserRating(rating, 181, _ID);
 
+                RommServiceClient client2 = new RommServiceClient();
+                RoomDto room = client2.getRoomDto(_ID);
+
+                if (room.userRatings != null)
+                {
+                    flowLayoutPanel2.Controls.Clear();
+                    foreach (var item in room.userRatings.Reverse())
+                    {
+                        CommentItem comment = new CommentItem(item.personName, item.description);
+                        flowLayoutPanel2.Controls.Add(comment);
+                    }
+                }
                 //SetRoomDetails(_ID);
 
                 MessageBox.Show("Comment succesfully added!", "Comment", MessageBoxButtons.OK);
