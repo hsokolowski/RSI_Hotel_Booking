@@ -174,7 +174,7 @@ namespace RSI_Hotel_Booking.Details
                     {
                         client.booking(booking);
                         MessageBox.Show("Resevartion is OK!", "Booking", MessageBoxButtons.OK);
-                        this.Close();
+                        //this.Close();
                     }
                     catch (Exception ex)
                     {
