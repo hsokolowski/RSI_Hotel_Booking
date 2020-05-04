@@ -51,9 +51,9 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.sendComment = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -100,7 +100,7 @@
             // persons
             // 
             this.persons.AutoSize = true;
-            this.persons.Location = new System.Drawing.Point(384, 43);
+            this.persons.Location = new System.Drawing.Point(352, 43);
             this.persons.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.persons.Name = "persons";
             this.persons.Size = new System.Drawing.Size(59, 17);
@@ -123,7 +123,7 @@
             // pricePerPerson
             // 
             this.pricePerPerson.AutoSize = true;
-            this.pricePerPerson.Location = new System.Drawing.Point(337, 18);
+            this.pricePerPerson.Location = new System.Drawing.Point(305, 17);
             this.pricePerPerson.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pricePerPerson.Name = "pricePerPerson";
             this.pricePerPerson.Size = new System.Drawing.Size(106, 17);
@@ -314,22 +314,6 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Commetns";
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(7, 22);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(711, 130);
-            this.flowLayoutPanel2.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(7, 160);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(600, 22);
-            this.textBox1.TabIndex = 1;
-            // 
             // sendComment
             // 
             this.sendComment.Location = new System.Drawing.Point(614, 157);
@@ -339,6 +323,22 @@
             this.sendComment.Text = "SEND";
             this.sendComment.UseVisualStyleBackColor = true;
             this.sendComment.Click += new System.EventHandler(this.sendComment_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(7, 160);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(600, 22);
+            this.textBox1.TabIndex = 1;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(7, 22);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(711, 130);
+            this.flowLayoutPanel2.TabIndex = 0;
             // 
             // DetailsForm
             // 

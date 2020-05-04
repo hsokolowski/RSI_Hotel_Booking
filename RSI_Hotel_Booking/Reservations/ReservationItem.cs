@@ -2,8 +2,6 @@
 using System.IO;
 using System.Windows.Forms;
 using RaportClient = RSI_Hotel_Booking.RaportService.BookingReportWebServiceClient;
-using Spire.Pdf;
-
 
 namespace RSI_Hotel_Booking.Reservations
 {
