@@ -100,7 +100,7 @@
             // persons
             // 
             this.persons.AutoSize = true;
-            this.persons.Location = new System.Drawing.Point(352, 43);
+            this.persons.Location = new System.Drawing.Point(316, 43);
             this.persons.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.persons.Name = "persons";
             this.persons.Size = new System.Drawing.Size(59, 17);
@@ -123,7 +123,7 @@
             // pricePerPerson
             // 
             this.pricePerPerson.AutoSize = true;
-            this.pricePerPerson.Location = new System.Drawing.Point(305, 17);
+            this.pricePerPerson.Location = new System.Drawing.Point(269, 17);
             this.pricePerPerson.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pricePerPerson.Name = "pricePerPerson";
             this.pricePerPerson.Size = new System.Drawing.Size(106, 17);
