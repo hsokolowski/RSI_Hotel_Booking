@@ -146,8 +146,8 @@ namespace RSI_Hotel_Booking.Details
         private void booking_Click(object sender, EventArgs e)
         {
             BookingDto booking = new BookingDto();
-            booking.dateFrom = dateTimePicker1.Value.Date;
-            booking.dateTo = dateTimePicker2.Value.Date;
+            booking.dateFrom = new DateTimeOffset(dateTimePicker1.Value.Date).ToUnixTimeSeconds();
+            booking.dateTo = new DateTimeOffset(dateTimePicker2.Value.Date).ToUnixTimeSeconds();
             booking.numberDays = (dateTimePicker2.Value.Date - dateTimePicker1.Value.Date).Days;
             long? iD = Globals.Globals.ID;
             //booking.personId = (long)iD;
