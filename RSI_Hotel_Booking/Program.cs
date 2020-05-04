@@ -15,8 +15,8 @@ namespace RSI_Hotel_Booking
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login());
-            Application.Run(new DetailsForm("Pokoój", 76));
+            Application.Run(new Login());
+            //Application.Run(new DetailsForm("Pokoój", 77));
         }
     }
 }

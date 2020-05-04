@@ -2,12 +2,14 @@
 using RoomDto = RSI_Hotel_Booking.RoomService.roomDto;
 using RommServiceClient = RSI_Hotel_Booking.RoomService.RoomWebServiceClient;
 using Rule = RSI_Hotel_Booking.RoomService.ruleDto;
-using UserRating = RSI_Hotel_Booking.RoomService.userRatingDto;
+using UserRating = RSI_Hotel_Booking.UserRatingService.userRatingDto;
+using UserRatingClient = RSI_Hotel_Booking.UserRatingService.UserRatingWebServiceClient;
 using BookingClient = RSI_Hotel_Booking.BookingService.BookingWebServiceClient;
 using BookingDto = RSI_Hotel_Booking.BookingService.bookingDto;
 using System.Drawing;
 using System;
 using System.Collections;
+using System.Linq;
 
 namespace RSI_Hotel_Booking.Details
 {
@@ -110,7 +112,7 @@ namespace RSI_Hotel_Booking.Details
 
             if (room.userRatings != null)
             {
-                foreach (var item in room.userRatings)
+                foreach (var item in room.userRatings.Reverse())
                 {
                     CommentItem comment = new CommentItem(item.personName, item.description);
                     flowLayoutPanel2.Controls.Add(comment);
@@ -146,21 +148,9 @@ namespace RSI_Hotel_Booking.Details
         private void booking_Click(object sender, EventArgs e)
         {
             BookingDto booking = new BookingDto();
-            booking.dateFrom = new DateTimeOffset(dateTimePicker1.Value.Date).ToUnixTimeSeconds();
-            booking.dateFromSpecified = true;
-            booking.dateTo = new DateTimeOffset(dateTimePicker2.Value.Date).ToUnixTimeSeconds();
-            booking.dateToSpecified = true;
-            booking.numberDays = (dateTimePicker2.Value.Date - dateTimePicker1.Value.Date).Days;
-            booking.numberDaysSpecified = true;
-            long? iD = Globals.Globals.ID;
-            //booking.personId = (long)iD;
-            booking.personId = 181;
-            booking.personIdSpecified = true;
-            booking.roomId = _ID;
-            booking.roomIdSpecified = true;
-            booking.numberPersons = Convert.ToInt32(persons.Text.Split(' ')[2]);
-            booking.numberPersonsSpecified = true;
-            
+
+            booking = SetBookingObject(booking, _ID, (long)Globals.Globals.ID);
+            //booking = SetBookingObject(booking, _ID, 181);
             
             BookingClient client = new BookingClient();
             if(client.checkAvailable(booking))
@@ -185,7 +175,7 @@ namespace RSI_Hotel_Booking.Details
                 }
                 else
                 {
-                    this.Close();
+                    //this.Close();
                 }
             }
             else
@@ -194,5 +184,48 @@ namespace RSI_Hotel_Booking.Details
             }
         }
 
+        private BookingDto SetBookingObject(BookingDto booking, long room, long user)
+        {
+            booking.dateFrom = new DateTimeOffset(dateTimePicker1.Value.Date).ToUnixTimeSeconds();
+            booking.dateTo = new DateTimeOffset(dateTimePicker2.Value.Date).ToUnixTimeSeconds();
+            booking.personId = room;
+            booking.roomId = room;
+            booking.numberDays = (dateTimePicker2.Value.Date - dateTimePicker1.Value.Date).Days;
+            booking.numberPersons = Convert.ToInt32(persons.Text.Split(' ')[2]);
+
+            //booking.personId = (long)iD;
+            booking.dateFromSpecified = true;
+            booking.dateToSpecified = true;
+            booking.personIdSpecified = true;
+            booking.roomIdSpecified = true;
+            booking.numberPersonsSpecified = true;
+            booking.numberDaysSpecified = true;
+
+            return booking;
+        }
+
+        private void sendComment_Click(object sender, EventArgs e)
+        {
+            UserRating rating = new UserRating();
+            rating.personName = textBox1.Text;
+            rating.description = textBox1.Text;
+
+            try
+            {
+                UserRatingClient client = new UserRatingClient();
+                client.addUserRating(rating, 181, _ID);
+
+                //SetRoomDetails(_ID);
+
+                MessageBox.Show("Comment succesfully added!", "Comment", MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Comment", MessageBoxButtons.OK);
+            }
+
+            textBox1.Text = "";
+        }
     }
 }

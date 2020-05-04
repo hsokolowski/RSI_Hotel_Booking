@@ -32,6 +32,7 @@
             this.search = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.logout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,12 +48,13 @@
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(630, 18);
+            this.search.Location = new System.Drawing.Point(505, 18);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(167, 40);
             this.search.TabIndex = 2;
             this.search.Text = "My Reservations";
             this.search.UseVisualStyleBackColor = true;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -70,11 +72,25 @@
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
+            // logout
+            // 
+            this.logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.logout.Location = new System.Drawing.Point(679, 18);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(118, 40);
+            this.logout.TabIndex = 4;
+            this.logout.Text = "Logout";
+            this.logout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.logout.UseVisualStyleBackColor = true;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 450);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.search);
             this.Controls.Add(this.label1);
@@ -93,6 +109,7 @@
         private System.Windows.Forms.Button search;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Button logout;
     }
 }
 

@@ -2,7 +2,11 @@
 using Localization = RSI_Hotel_Booking.LocalizationService.localizationDto;
 using LocalizationWebServiceClient = RSI_Hotel_Booking.LocalizationService.LocalizationWebServiceClient;
 using Global = RSI_Hotel_Booking.Globals.Globals;
+using Resources = RSI_Hotel_Booking.Properties.Resources;
 using System.Drawing;
+using System.Linq;
+using RSI_Hotel_Booking.Auth;
+using RSI_Hotel_Booking.Reservations;
 
 namespace RSI_Hotel_Booking
 {
@@ -12,6 +16,8 @@ namespace RSI_Hotel_Booking
         {
             InitializeComponent();
             label1.Text = "Hello " + Global.Login.ToString() + "!";
+
+            logout.Image = (Image)(new Bitmap(Resources.logout, new Size(30, 30)));
 
             SetLocalization();
         }
@@ -40,6 +46,24 @@ namespace RSI_Hotel_Booking
 
                 flowLayoutPanel1.Controls.Add(listItem);
             }
+        }
+
+        private void logout_Click(object sender, System.EventArgs e)
+        {
+            Form[] forms = Application.OpenForms.Cast<Form>().ToArray();
+            foreach (Form thisForm in forms)
+            {
+                if (thisForm.Name != "Login") thisForm.Close();
+            }
+
+            Login form = new Login();
+            form.ShowDialog();
+        }
+
+        private void search_Click(object sender, System.EventArgs e)
+        {
+            ReservationForm f = new ReservationForm();
+            f.ShowDialog();
         }
     }
 }

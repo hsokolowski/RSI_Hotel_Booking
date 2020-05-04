@@ -15,8 +15,8 @@ namespace RSI_Hotel_Booking.Details
         public CommentItem(string name, string com)
         {
             InitializeComponent();
-            label1.Text = name;
-            descriptionTb.Text = com;
+            //label1.Text = name;
+            descriptionTb.Text = name;
         }
     }
 }
