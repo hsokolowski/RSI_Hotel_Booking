@@ -54,13 +54,8 @@ namespace RSI_Hotel_Booking.Auth
 
             using (new OperationContextScope(client.InnerChannel))
             {
-                string str = "7682d860-7f58-11ea-bc55-0242ac130003";
-                HttpRequestMessageProperty reqMsg = new HttpRequestMessageProperty();
 
-                MessageHeader usernameTokenHeader = MessageHeader.CreateHeader("accessCode",
-                    "http://endpoint.ws.project.soap.rsi.com/", str);
-                OperationContext.Current.OutgoingMessageHeaders.Add(usernameTokenHeader);
-
+                Program.AddAccessHeaders();
                 try
                 {
                     Global.ID = client.login(user);

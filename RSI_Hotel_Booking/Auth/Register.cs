@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.ServiceModel;
 using System.Windows.Forms;
 using SecurityWebServiceClient = RSI_Hotel_Booking.SecurityService.SecurityWebServiceClient;
 using UserDto = RSI_Hotel_Booking.SecurityService.userDto;
@@ -44,7 +45,11 @@ namespace RSI_Hotel_Booking.Auth
         {
             try
             {
-                exceptionlabel.Text = client.register(user).ToString();
+                using (new OperationContextScope(client.InnerChannel))
+                {
+                    Program.AddAccessHeaders();
+                    exceptionlabel.Text = client.register(user).ToString();
+                }
                 return true;
             }
             catch (Exception e)

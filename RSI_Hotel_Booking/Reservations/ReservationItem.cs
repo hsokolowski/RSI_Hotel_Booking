@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.ServiceModel;
 using System.Windows.Forms;
 using RaportClient = RSI_Hotel_Booking.RaportService.BookingReportWebServiceClient;
 
@@ -28,46 +29,64 @@ namespace RSI_Hotel_Booking.Reservations
         public string DateFromTo
         {
             get { return _date; }
-            set { _date = value; date.Text = value; }
+            set
+            {
+                _date = value;
+                date.Text = value;
+            }
         }
 
 
         public string Room
         {
             get { return _room; }
-            set { _room = value; room.Text = value; }
+            set
+            {
+                _room = value;
+                room.Text = value;
+            }
         }
 
 
         public string Hotel
         {
             get { return _hotel; }
-            set { _hotel = value; hotel.Text = value; }
+            set
+            {
+                _hotel = value;
+                hotel.Text = value;
+            }
         }
 
 
         public string City
         {
             get { return _city; }
-            set { _city = value; city.Text = value; }
+            set
+            {
+                _city = value;
+                city.Text = value;
+            }
         }
 
         private void raportBtn_Click(object sender, EventArgs e)
         {
             RaportClient client = new RaportClient();
-
-            byte[] array = client.getBookingConfirmation(id);
-
-
-            if (ByteArrayToFile("Raport Reservation.pdf", array))
+            using (new OperationContextScope(client.InnerChannel))
             {
-                MessageBox.Show("Raport succesfully download!", "Raport", MessageBoxButtons.OK);
-                //System.Diagnostics.Process.Start("C:/Users/Hubert/IdeaProjects/rsiprojecthotelreservation/bookingArchive/" );
+                Program.AddAccessHeaders();
+                byte[] array = client.getBookingConfirmation(id);
 
-            }
-            else
-            {
-                MessageBox.Show("Raport download failed!", "Raport", MessageBoxButtons.OK);
+
+                if (ByteArrayToFile("Raport Reservation.pdf", array))
+                {
+                    MessageBox.Show("Raport succesfully download!", "Raport", MessageBoxButtons.OK);
+                    //System.Diagnostics.Process.Start("C:/Users/Hubert/IdeaProjects/rsiprojecthotelreservation/bookingArchive/" );
+                }
+                else
+                {
+                    MessageBox.Show("Raport download failed!", "Raport", MessageBoxButtons.OK);
+                }
             }
         }
 

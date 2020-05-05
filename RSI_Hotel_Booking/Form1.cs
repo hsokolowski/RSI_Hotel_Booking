@@ -5,6 +5,7 @@ using Global = RSI_Hotel_Booking.Globals.Globals;
 using Resources = RSI_Hotel_Booking.Properties.Resources;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using RSI_Hotel_Booking.Auth;
 using RSI_Hotel_Booking.Reservations;
 
@@ -17,7 +18,7 @@ namespace RSI_Hotel_Booking
             InitializeComponent();
             label1.Text = "Hello " + Global.Login.ToString() + "!";
 
-            logout.Image = (Image)(new Bitmap(Resources.logout, new Size(30, 30)));
+            logout.Image = (Image) (new Bitmap(Resources.logout, new Size(30, 30)));
 
             SetLocalization();
         }
@@ -25,26 +26,28 @@ namespace RSI_Hotel_Booking
         private void SetLocalization()
         {
             LocalizationWebServiceClient client = new LocalizationWebServiceClient();
-            Localization[] localizationDtos = client.getLocalizationListDto();
-
-            foreach (var item in localizationDtos)
+            using (new OperationContextScope(client.InnerChannel))
             {
-                System.Console.WriteLine(item.id + " " + item.name + " " + item.photo);
-                Form1ListItem listItem = new Form1ListItem();
-                listItem.Title = item.name;
-                listItem.Subtitle = item.id;
-
-                if (item.photo != null)
+                Program.AddAccessHeaders();
+                Localization[] localizationDtos = client.getLocalizationListDto();
+                foreach (var item in localizationDtos)
                 {
-                    System.Net.WebRequest request = System.Net.WebRequest.Create(item.photo);
-                    System.Net.WebResponse response = request.GetResponse();
-                    System.IO.Stream responseStream = response.GetResponseStream();
-                    Bitmap bitmap = new Bitmap(responseStream);
+                    System.Console.WriteLine(item.id + " " + item.name + " " + item.photo);
+                    Form1ListItem listItem = new Form1ListItem();
+                    listItem.Title = item.name;
+                    listItem.Subtitle = item.id;
 
-                    listItem.Image = bitmap;
+                    if (item.photo != null)
+                    {
+                        System.Net.WebRequest request = System.Net.WebRequest.Create(item.photo);
+                        System.Net.WebResponse response = request.GetResponse();
+                        System.IO.Stream responseStream = response.GetResponseStream();
+                        Bitmap bitmap = new Bitmap(responseStream);
+
+                        listItem.Image = bitmap;
+                    }
+                    flowLayoutPanel1.Controls.Add(listItem);
                 }
-
-                flowLayoutPanel1.Controls.Add(listItem);
             }
         }
 

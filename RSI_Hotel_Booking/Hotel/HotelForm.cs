@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.ServiceModel;
 using System.Windows.Forms;
 using HotelListDto = RSI_Hotel_Booking.HotelService.hotelListDto;
 using HotelServiceClient = RSI_Hotel_Booking.HotelService.HotelWebServiceClient;
@@ -23,32 +24,35 @@ namespace RSI_Hotel_Booking.Hotel
         private void SetHotels()
         {
             HotelServiceClient client = new HotelServiceClient();
-            HotelListDto[] hotelListDtos = client.getHotelListDto(_ID);
-
-            if(hotelListDtos != null)
+            using (new OperationContextScope(client.InnerChannel))
             {
-                foreach (var item in hotelListDtos)
+                Program.AddAccessHeaders();
+                HotelListDto[] hotelListDtos = client.getHotelListDto(_ID);
+
+                if (hotelListDtos != null)
                 {
-                    HotelListItem listItem = new HotelListItem();
-
-                    listItem.Title = item.name;
-                    listItem.Subtitle = item.id;
-
-                    if (item.exhibitionPhoto != null)
+                    foreach (var item in hotelListDtos)
                     {
-                        System.Net.WebRequest request = System.Net.WebRequest.Create(item.exhibitionPhoto);
-                        System.Net.WebResponse response = request.GetResponse();
-                        System.IO.Stream responseStream = response.GetResponseStream();
-                        Bitmap bitmap = new Bitmap(responseStream);
+                        HotelListItem listItem = new HotelListItem();
 
-                        listItem.Image = bitmap;
+                        listItem.Title = item.name;
+                        listItem.Subtitle = item.id;
+
+                        if (item.exhibitionPhoto != null)
+                        {
+                            System.Net.WebRequest request = System.Net.WebRequest.Create(item.exhibitionPhoto);
+                            System.Net.WebResponse response = request.GetResponse();
+                            System.IO.Stream responseStream = response.GetResponseStream();
+                            Bitmap bitmap = new Bitmap(responseStream);
+
+                            listItem.Image = bitmap;
+                        }
+
+
+                        flowLayoutPanel1.Controls.Add(listItem);
                     }
-
-
-                    flowLayoutPanel1.Controls.Add(listItem);
                 }
             }
-  
         }
     }
 }
