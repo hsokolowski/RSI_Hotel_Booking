@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,14 +16,19 @@ namespace RSI_Hotel_Booking.Reservations
     public partial class ReservationForm : Form
     {
         ReservationDto[] resevations, resevationsIncoming;
+
         public ReservationForm()
         {
             InitializeComponent();
-
             ReservationClient client = new ReservationClient();
-            resevations = client.getBookingViewDtos((long)Globals.Globals.ID);
+            using (new OperationContextScope(client.InnerChannel))
+            {
+                Program.AddAccessHeaders();
+                resevations = client.getBookingViewDtos((long) Globals.Globals.ID);
 
-            resevationsIncoming = resevations.OrderBy(c => c.dateFrom).Where(r => r.dateTo > DateTime.Now).ToArray();
+                resevationsIncoming =
+                    resevations.OrderBy(c => c.dateFrom).Where(r => r.dateTo > DateTime.Now).ToArray();
+            }
 
             SetReservation(resevationsIncoming);
         }
@@ -30,7 +36,7 @@ namespace RSI_Hotel_Booking.Reservations
         private void SetReservation(ReservationDto[] resevations)
         {
             flowLayoutPanel1.Controls.Clear();
-            
+
             foreach (var item in resevations)
             {
                 ReservationItem listItem = new ReservationItem();
@@ -38,7 +44,8 @@ namespace RSI_Hotel_Booking.Reservations
                 listItem.IdReservation = item.id;
                 listItem.Hotel = item.hotelName;
                 listItem.Room = item.roomName;
-                listItem.DateFromTo = "From: " + item.dateFrom.Date.ToString("dd/MM/yyyy") + " to " + item.dateTo.Date.ToString("dd/MM/yyyy");
+                listItem.DateFromTo = "From: " + item.dateFrom.Date.ToString("dd/MM/yyyy") + " to " +
+                                      item.dateTo.Date.ToString("dd/MM/yyyy");
 
                 flowLayoutPanel1.Controls.Add(listItem);
             }
@@ -46,7 +53,7 @@ namespace RSI_Hotel_Booking.Reservations
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 SetReservation(resevations);
             }
