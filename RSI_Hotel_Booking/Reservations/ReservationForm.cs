@@ -24,10 +24,11 @@ namespace RSI_Hotel_Booking.Reservations
             using (new OperationContextScope(client.InnerChannel))
             {
                 Program.AddAccessHeaders();
+                Console.WriteLine("Reservations");
                 resevations = client.getBookingViewDtos((long) Globals.Globals.ID);
 
                 resevationsIncoming =
-                    resevations.OrderBy(c => c.dateFrom).Where(r => r.dateTo > DateTime.Now).ToArray();
+                    resevations.OrderBy(c => c.dateFrom).Where(r => r.dateTo >= DateTime.Now).ToArray();
             }
 
             SetReservation(resevationsIncoming);

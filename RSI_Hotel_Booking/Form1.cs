@@ -8,11 +8,19 @@ using System.Linq;
 using System.ServiceModel;
 using RSI_Hotel_Booking.Auth;
 using RSI_Hotel_Booking.Reservations;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System;
+using System.Net.Http.Headers;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace RSI_Hotel_Booking
 {
     public partial class Form1 : Form
     {
+        static HttpClient client2 = new HttpClient();
+
         public Form1()
         {
             InitializeComponent();
@@ -23,13 +31,13 @@ namespace RSI_Hotel_Booking
             SetLocalization();
         }
 
-        private void SetLocalization()
+        private async void SetLocalization()
         {
             LocalizationWebServiceClient client = new LocalizationWebServiceClient();
             using (new OperationContextScope(client.InnerChannel))
             {
                 Program.AddAccessHeaders();
-                Localization[] localizationDtos = client.getLocalizationListDto();
+                Localization[] localizationDtos = await getLocalizationListDto();
                 foreach (var item in localizationDtos)
                 {
                     System.Console.WriteLine(item.id + " " + item.name + " " + item.photo);
@@ -67,6 +75,24 @@ namespace RSI_Hotel_Booking
         {
             ReservationForm f = new ReservationForm();
             f.ShowDialog();
+        }
+
+        private async Task<Localization[]> getLocalizationListDto()
+        {
+            client2.BaseAddress = new Uri(Global.URL);
+            client2.DefaultRequestHeaders.Accept.Clear();
+            client2.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
+            var response = await client2.GetAsync("/localization/localization/list");
+
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<Localization[]>(json);
+
+            Localization[] localizationDtos = data;
+
+            return localizationDtos;
         }
     }
 }

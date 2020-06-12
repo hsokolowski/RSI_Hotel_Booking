@@ -6,12 +6,16 @@ using UserDto = RSI_Hotel_Booking.SecurityService.userDto;
 using Global = RSI_Hotel_Booking.Globals.Globals;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace RSI_Hotel_Booking.Auth
 {
     public partial class Login : Form
     {
         UserDto user = new UserDto();
+        static HttpClient client2 = new HttpClient();
 
         public Login()
         {
@@ -20,11 +24,14 @@ namespace RSI_Hotel_Booking.Auth
             exceptionLabel.ForeColor = Color.Red;
         }
 
-        private void loginBtn_Click(object sender, EventArgs e)
+        private async void loginBtn_Click(object sender, EventArgs e)
         {
             exceptionLabel.Visible = false;
 
-            if (IsPositiveLogin()) // positive
+            var task = IsPositiveLogin();
+            var isPositive = await task;
+
+            if (isPositive) // positive
             {
                 this.Hide();
                 Form1 sistema = new Form1();
@@ -46,7 +53,7 @@ namespace RSI_Hotel_Booking.Auth
             this.Close();
         }
 
-        private bool IsPositiveLogin()
+        private async Task<bool> IsPositiveLogin()
         {
             SetData();
 
@@ -58,7 +65,10 @@ namespace RSI_Hotel_Booking.Auth
                 Program.AddAccessHeaders();
                 try
                 {
-                    Global.ID = client.login(user);
+                    //Global.ID = client.login(user);
+
+
+                    Global.ID = await LoginREST(user);
                     Global.Login = loginTextBox.Text;
                     return true;
                 }
@@ -83,6 +93,20 @@ namespace RSI_Hotel_Booking.Auth
         {
             user.username = loginTextBox.Text;
             user.password = passwordTextBox.Text;
+        }
+
+        private async Task<long> LoginREST(UserDto u)
+        {
+            client2.BaseAddress = new Uri("http://localhost:4354/api/");
+            client2.DefaultRequestHeaders.Accept.Clear();
+            client2.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = await client2.GetAsync("products");
+
+            long id = 0; // response get id
+
+            return id;
         }
     }
 }

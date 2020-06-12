@@ -197,7 +197,7 @@ namespace RSI_Hotel_Booking.Details
         {
             booking.dateFrom = new DateTimeOffset(dateTimePicker1.Value.Date).ToUnixTimeSeconds();
             booking.dateTo = new DateTimeOffset(dateTimePicker2.Value.Date).ToUnixTimeSeconds();
-            booking.personId = room;
+            booking.personId = user;
             booking.roomId = room;
             booking.numberDays = (dateTimePicker2.Value.Date - dateTimePicker1.Value.Date).Days;
             booking.numberPersons = Convert.ToInt32(persons.Text.Split(' ')[2]);
