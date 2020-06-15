@@ -1,8 +1,15 @@
-﻿using System.Drawing;
+﻿using Newtonsoft.Json;
+using RSI_Hotel_Booking.Globals;
+using System;
+using System.Drawing;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.ServiceModel;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelListDto = RSI_Hotel_Booking.HotelService.hotelListDto;
 using HotelServiceClient = RSI_Hotel_Booking.HotelService.HotelWebServiceClient;
+using Global = RSI_Hotel_Booking.Globals.Globals;
 
 namespace RSI_Hotel_Booking.Hotel
 {
@@ -10,6 +17,7 @@ namespace RSI_Hotel_Booking.Hotel
     {
         string _name;
         long _ID;
+        static HttpClient client2 = new HttpClient();
 
         public HotelForm(string name, long id)
         {
@@ -21,13 +29,14 @@ namespace RSI_Hotel_Booking.Hotel
             SetHotels();
         }
 
-        private void SetHotels()
+        private async void SetHotels()
         {
             HotelServiceClient client = new HotelServiceClient();
             using (new OperationContextScope(client.InnerChannel))
             {
                 Program.AddAccessHeaders();
-                HotelListDto[] hotelListDtos = client.getHotelListDto(_ID);
+                var data =  await getHotelListDto();
+                HotelListDto[] hotelListDtos = data;
 
                 if (hotelListDtos != null)
                 {
@@ -53,6 +62,24 @@ namespace RSI_Hotel_Booking.Hotel
                     }
                 }
             }
+        }
+
+        private async Task<HotelListDto[]> getHotelListDto()
+        {
+            client2.BaseAddress = new Uri(Global.URL);
+            client2.DefaultRequestHeaders.Accept.Clear();
+            client2.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
+            var response = await client2.GetAsync("hotel/list?hotelId=7");
+
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<HotelListDto[]>(json);
+
+            HotelListDto[] localizationDtos = data;
+
+            return localizationDtos; 
         }
     }
 }

@@ -1,8 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Net.Http;
 using System.ServiceModel;
 using System.Windows.Forms;
 using RaportClient = RSI_Hotel_Booking.RaportService.BookingReportWebServiceClient;
+using Global = RSI_Hotel_Booking.Globals.Globals;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace RSI_Hotel_Booking.Reservations
 {
@@ -69,13 +74,17 @@ namespace RSI_Hotel_Booking.Reservations
             }
         }
 
-        private void raportBtn_Click(object sender, EventArgs e)
+        static HttpClient client2 = new HttpClient();
+
+        private async void raportBtn_Click(object sender, EventArgs e)
         {
             RaportClient client = new RaportClient();
+            
             using (new OperationContextScope(client.InnerChannel))
             {
                 Program.AddAccessHeaders();
-                byte[] array = client.getBookingConfirmation(id);
+                //byte[] array = client.getBookingConfirmation(id);
+                byte[] array = await getReservationsRaportREST(id);
 
 
                 if (ByteArrayToFile("Raport Reservation.pdf", array))
@@ -88,6 +97,24 @@ namespace RSI_Hotel_Booking.Reservations
                     MessageBox.Show("Raport download failed!", "Raport", MessageBoxButtons.OK);
                 }
             }
+        }
+
+        private async Task<byte[]> getReservationsRaportREST(long id)
+        {
+            client2.BaseAddress = new Uri(Global.URL);
+            client2.DefaultRequestHeaders.Accept.Clear();
+            client2.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
+            var response = await client2.GetAsync("/booking/raport?personId=" + id);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<byte[]>(json);
+
+            byte[] localizationDtos = data;
+
+            return localizationDtos;
         }
 
         public bool ByteArrayToFile(string fileName, byte[] byteArray)

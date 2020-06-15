@@ -9,6 +9,7 @@ using System.ServiceModel.Channels;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace RSI_Hotel_Booking.Auth
 {
@@ -97,16 +98,25 @@ namespace RSI_Hotel_Booking.Auth
 
         private async Task<long> LoginREST(UserDto u)
         {
-            client2.BaseAddress = new Uri("http://localhost:4354/api/");
+            client2.BaseAddress = new Uri(Global.URL);
             client2.DefaultRequestHeaders.Accept.Clear();
             client2.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var response = await client2.GetAsync("products");
+            var myContent = JsonConvert.SerializeObject(user);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client2.PostAsync("/login", byteContent);
 
-            long id = 0; // response get id
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<long>(json);
+
+
+            long id = data; // response get id
 
             return id;
+
         }
     }
 }

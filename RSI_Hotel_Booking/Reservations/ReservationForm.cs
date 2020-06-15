@@ -10,28 +10,57 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReservationDto = RSI_Hotel_Booking.BookingService.bookingViewDto;
 using ReservationClient = RSI_Hotel_Booking.BookingService.BookingWebServiceClient;
+using Global = RSI_Hotel_Booking.Globals.Globals;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace RSI_Hotel_Booking.Reservations
 {
     public partial class ReservationForm : Form
     {
         ReservationDto[] resevations, resevationsIncoming;
+        static HttpClient client2 = new HttpClient();
 
         public ReservationForm()
         {
             InitializeComponent();
+            InitReservations();
+        }
+
+        public async void InitReservations()
+        {
             ReservationClient client = new ReservationClient();
             using (new OperationContextScope(client.InnerChannel))
             {
                 Program.AddAccessHeaders();
                 Console.WriteLine("Reservations");
-                resevations = client.getBookingViewDtos((long) Globals.Globals.ID);
+                //resevations = client.getBookingViewDtos((long) Globals.Globals.ID);
+                resevations = await getReservationsTREST((long)Globals.Globals.ID);
 
                 resevationsIncoming =
                     resevations.OrderBy(c => c.dateFrom).Where(r => r.dateTo >= DateTime.Now).ToArray();
             }
 
             SetReservation(resevationsIncoming);
+        }
+
+        private async Task<ReservationDto[]> getReservationsTREST(long id)
+        {
+            client2.BaseAddress = new Uri(Global.URL);
+            client2.DefaultRequestHeaders.Accept.Clear();
+            client2.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
+            var response = await client2.GetAsync("/booking/list?personId=" + id);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<ReservationDto[]>(json);
+
+            ReservationDto[] localizationDtos = data;
+
+            return localizationDtos;
         }
 
         private void SetReservation(ReservationDto[] resevations)
@@ -63,5 +92,6 @@ namespace RSI_Hotel_Booking.Reservations
                 SetReservation(resevationsIncoming);
             }
         }
+
     }
 }

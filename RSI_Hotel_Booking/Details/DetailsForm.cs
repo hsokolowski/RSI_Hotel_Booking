@@ -11,6 +11,11 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.ServiceModel;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Global = RSI_Hotel_Booking.Globals.Globals;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace RSI_Hotel_Booking.Details
 {
@@ -19,7 +24,7 @@ namespace RSI_Hotel_Booking.Details
         long _ID;
         RoomDto room;
         ImageList myImageList;
-
+        static HttpClient client2 = new HttpClient();
 
         public DetailsForm(string title, long id)
         {
@@ -48,13 +53,32 @@ namespace RSI_Hotel_Booking.Details
 
         #endregion
 
-        private void SetRoomDetails(long id)
+        private async Task<RoomDto> getRoomDtoREST(long id)
+        {
+            client2.BaseAddress = new Uri(Global.URL);
+            client2.DefaultRequestHeaders.Accept.Clear();
+            client2.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
+            var response = await client2.GetAsync("/room?roomId="+id);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var data = JsonConvert.DeserializeObject<RoomDto>(json);
+
+            RoomDto localizationDtos = data;
+
+            return localizationDtos;
+        }
+
+        private async void SetRoomDetails(long id)
         {
             RommServiceClient client = new RommServiceClient();
             using (new OperationContextScope(client.InnerChannel))
             {
                 Program.AddAccessHeaders();
-                room = client.getRoomDto(id);
+                //room = client.getRoomDto(id);
+                room = await getRoomDtoREST(id);
                 nameRoom.Text = room.name;
                 descriptionTb.Text = room.description;
                 pricePerPerson.Text = "Price per person: " + room.pricePerPerson + "$";
@@ -149,7 +173,7 @@ namespace RSI_Hotel_Booking.Details
             }
         }
 
-        private void booking_Click(object sender, EventArgs e)
+        private async void booking_Click(object sender, EventArgs e)
         {
             BookingDto booking = new BookingDto();
 
@@ -161,7 +185,22 @@ namespace RSI_Hotel_Booking.Details
             using (new OperationContextScope(client.InnerChannel))
             {
                 Program.AddAccessHeaders();
-                if (client.checkAvailable(booking))
+                //#############################   REST ####################################
+                //client2.BaseAddress = new Uri(Global.URL);
+                //client2.DefaultRequestHeaders.Accept.Clear();
+                //client2.DefaultRequestHeaders.Accept.Add(
+                //    new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var myContent = JsonConvert.SerializeObject(booking);
+                var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                var byteContent = new ByteArrayContent(buffer);
+                byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = await client2.PostAsync("/booking/available", byteContent);
+                var json = await response.Content.ReadAsStringAsync();
+                var isAvaible = JsonConvert.DeserializeObject<bool>(json);
+                var asfsdf = 0;
+                //#############################   REST ####################################
+                if (isAvaible)
                 {
                     string message = "Are you sure you want to rent this room?";
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -170,7 +209,13 @@ namespace RSI_Hotel_Booking.Details
                     {
                         try
                         {
-                            client.booking(booking);
+                            //client.booking(booking);
+                            var myContent1 = JsonConvert.SerializeObject(booking);
+                            var buffer1 = System.Text.Encoding.UTF8.GetBytes(myContent1);
+                            var byteContent1 = new ByteArrayContent(buffer1);
+                            byteContent1.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                            var res = await client2.PostAsync("/booking/", byteContent1);
+                            var json1 = await res.Content.ReadAsStringAsync();
                             MessageBox.Show("Resevartion is OK!", "Booking", MessageBoxButtons.OK);
                             //this.Close();
                         }

@@ -1,5 +1,7 @@
 ﻿using RSI_Hotel_Booking.Auth;
 using RSI_Hotel_Booking.Details;
+using RSI_Hotel_Booking.Hotel;
+using RSI_Hotel_Booking.Reservations;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -18,7 +20,7 @@ namespace RSI_Hotel_Booking
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Login());
-            Application.Run(new Form1());
+            Application.Run(new HotelForm("abc", 11));
         }
 
 

@@ -37,7 +37,7 @@ namespace RSI_Hotel_Booking
             using (new OperationContextScope(client.InnerChannel))
             {
                 Program.AddAccessHeaders();
-                Localization[] localizationDtos = await getLocalizationListDto();
+                Localization[] localizationDtos = await getLocalizationListDtoREST();
                 foreach (var item in localizationDtos)
                 {
                     System.Console.WriteLine(item.id + " " + item.name + " " + item.photo);
@@ -77,7 +77,7 @@ namespace RSI_Hotel_Booking
             f.ShowDialog();
         }
 
-        private async Task<Localization[]> getLocalizationListDto()
+        private async Task<Localization[]> getLocalizationListDtoREST()
         {
             client2.BaseAddress = new Uri(Global.URL);
             client2.DefaultRequestHeaders.Accept.Clear();
@@ -85,7 +85,7 @@ namespace RSI_Hotel_Booking
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
             //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
-            var response = await client2.GetAsync("/localization/localization/list");
+            var response = await client2.GetAsync("/localization/list");
 
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<Localization[]>(json);
