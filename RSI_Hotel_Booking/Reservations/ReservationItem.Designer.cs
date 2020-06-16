@@ -22,9 +22,9 @@
 
         #region Kod wygenerowany przez Projektanta składników
 
-        /// <summary> 
-        /// Metoda wymagana do obsługi projektanta — nie należy modyfikować 
-        /// jej zawartości w edytorze kodu.
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -38,45 +38,51 @@
             // city
             // 
             this.city.AutoSize = true;
-            this.city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.city.Location = new System.Drawing.Point(4, 4);
+            this.city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (238)));
+            this.city.Location = new System.Drawing.Point(3, 3);
+            this.city.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.city.Name = "city";
-            this.city.Size = new System.Drawing.Size(64, 25);
+            this.city.Size = new System.Drawing.Size(51, 20);
             this.city.TabIndex = 0;
             this.city.Text = "label1";
             // 
             // hotel
             // 
             this.hotel.AutoSize = true;
-            this.hotel.Location = new System.Drawing.Point(6, 29);
+            this.hotel.Location = new System.Drawing.Point(5, 28);
+            this.hotel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hotel.Name = "hotel";
-            this.hotel.Size = new System.Drawing.Size(46, 17);
+            this.hotel.Size = new System.Drawing.Size(38, 15);
             this.hotel.TabIndex = 1;
             this.hotel.Text = "label1";
             // 
             // room
             // 
             this.room.AutoSize = true;
-            this.room.Location = new System.Drawing.Point(6, 55);
+            this.room.Location = new System.Drawing.Point(5, 52);
+            this.room.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.room.Name = "room";
-            this.room.Size = new System.Drawing.Size(46, 17);
+            this.room.Size = new System.Drawing.Size(38, 15);
             this.room.TabIndex = 2;
             this.room.Text = "label1";
             // 
             // date
             // 
             this.date.AutoSize = true;
-            this.date.Location = new System.Drawing.Point(227, 11);
+            this.date.Location = new System.Drawing.Point(198, 10);
+            this.date.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(46, 17);
+            this.date.Size = new System.Drawing.Size(38, 15);
             this.date.TabIndex = 3;
             this.date.Text = "label1";
             // 
             // raportBtn
             // 
-            this.raportBtn.Location = new System.Drawing.Point(436, 26);
+            this.raportBtn.Location = new System.Drawing.Point(381, 24);
+            this.raportBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.raportBtn.Name = "raportBtn";
-            this.raportBtn.Size = new System.Drawing.Size(75, 33);
+            this.raportBtn.Size = new System.Drawing.Size(65, 31);
             this.raportBtn.TabIndex = 4;
             this.raportBtn.Text = "Raport";
             this.raportBtn.UseVisualStyleBackColor = true;
@@ -84,7 +90,7 @@
             // 
             // ReservationItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.raportBtn);
@@ -92,11 +98,11 @@
             this.Controls.Add(this.room);
             this.Controls.Add(this.hotel);
             this.Controls.Add(this.city);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ReservationItem";
-            this.Size = new System.Drawing.Size(525, 80);
+            this.Size = new System.Drawing.Size(460, 75);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

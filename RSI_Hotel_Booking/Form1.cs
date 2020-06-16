@@ -83,6 +83,8 @@ namespace RSI_Hotel_Booking
             client2.DefaultRequestHeaders.Accept.Clear();
             client2.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
+            client2.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Basic", Globals.Globals.Login+":"+Globals.Globals.Password);
 
             //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
             var response = await client2.GetAsync("/localization/list");

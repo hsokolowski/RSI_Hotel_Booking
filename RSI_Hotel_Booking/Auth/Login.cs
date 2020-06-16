@@ -71,6 +71,7 @@ namespace RSI_Hotel_Booking.Auth
 
                     Global.ID = await LoginREST(user);
                     Global.Login = loginTextBox.Text;
+                    Global.Password = passwordTextBox.Text;
                     return true;
                 }
                 catch (Exception ex)
@@ -98,6 +99,7 @@ namespace RSI_Hotel_Booking.Auth
 
         private async Task<long> LoginREST(UserDto u)
         {
+            HttpClient client2 = new HttpClient();
             client2.BaseAddress = new Uri(Global.URL);
             client2.DefaultRequestHeaders.Accept.Clear();
             client2.DefaultRequestHeaders.Accept.Add(

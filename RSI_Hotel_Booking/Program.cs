@@ -20,7 +20,8 @@ namespace RSI_Hotel_Booking
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Login());
-            Application.Run(new HotelForm("abc", 11));
+            // Application.Run(new HotelForm("abc", 45));
+            Application.Run(new Login());
         }
 
 

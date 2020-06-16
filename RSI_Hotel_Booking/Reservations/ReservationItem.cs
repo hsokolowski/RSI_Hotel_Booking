@@ -107,12 +107,12 @@ namespace RSI_Hotel_Booking.Reservations
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
             //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
-            var response = await client2.GetAsync("/booking/raport?personId=" + id);
+            var response = await client2.GetAsync("/report?bookingId=" + id);
 
-            var json = await response.Content.ReadAsStringAsync();
-            var data = JsonConvert.DeserializeObject<byte[]>(json);
+            var json = await response.Content.ReadAsByteArrayAsync();
+            // var data = JsonConvert.DeserializeObject<byte[]>(json);
 
-            byte[] localizationDtos = data;
+            byte[] localizationDtos = json;
 
             return localizationDtos;
         }

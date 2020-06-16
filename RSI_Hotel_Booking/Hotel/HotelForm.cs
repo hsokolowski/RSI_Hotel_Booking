@@ -72,7 +72,7 @@ namespace RSI_Hotel_Booking.Hotel
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
             //var response = await client2.GetAsync("/localization/localization/list?personId=" + Global.ID);
-            var response = await client2.GetAsync("hotel/list?hotelId=7");
+            var response = await client2.GetAsync("hotel/list?hotelId="+_ID);
 
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<HotelListDto[]>(json);
